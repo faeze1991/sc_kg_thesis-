@@ -1,0 +1,9 @@
+entity_types:
+- company
+- product
+- location
+relation_types:
+- manufactures
+- is_component_of
+- distributed_by
+- made_in

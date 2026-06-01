@@ -1,0 +1,11 @@
+
+# data files
+data/raw/
+data/extracted/
+
+# python cache
+__pycache__/
+*.pyc
+
+# environment
+.env
