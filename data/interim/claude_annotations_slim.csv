@@ -1,0 +1,368 @@
+record_id;claude_manufactures_yes_no;claude_distributed_by;claude_made_in;claude_is_component_of
+ann_0000;no;Skechers;unknown;unknown
+ann_0001;no;Valyrian Steel;unknown;unknown
+ann_0002;no;New Era;unknown;unknown
+ann_0003;no;unknown;unknown;unknown
+ann_0004;yes;unknown;unknown;unknown
+ann_0005;unknown;unknown;unknown;unknown
+ann_0006;yes;unknown;unknown;unknown
+ann_0007;no;NISMO;unknown;RB26DETT engine
+ann_0008;no;Dewit;Netherlands;unknown
+ann_0009;no;unknown;Denmark;unknown
+ann_0010;unknown;unknown;unknown;unknown
+ann_0011;no;InLine;unknown;unknown
+ann_0012;no;Woody Valley;unknown;unknown
+ann_0013;no;unknown;unknown;unknown
+ann_0014;unknown;unknown;unknown;unknown
+ann_0015;unknown;unknown;unknown;unknown
+ann_0016;unknown;unknown;unknown;unknown
+ann_0017;no;HarperCollins;unknown;unknown
+ann_0018;unknown;unknown;unknown;unknown
+ann_0019;yes;unknown;unknown;unknown
+ann_0020;unknown;unknown;unknown;unknown
+ann_0021;no;Rongta;unknown;unknown
+ann_0022;no;Pearl;unknown;unknown
+ann_0023;unknown;unknown;unknown;unknown
+ann_0024;no;Julie Vos;unknown;unknown
+ann_0025;no;Sporthill;United States;unknown
+ann_0026;yes;unknown;Australia;unknown
+ann_0027;unknown;unknown;unknown;unknown
+ann_0028;unknown;unknown;unknown;unknown
+ann_0029;no;Kendall Howard;unknown;unknown
+ann_0030;no;Ecoliquid;unknown;unknown
+ann_0031;unknown;unknown;unknown;unknown
+ann_0032;no;SLAM;unknown;unknown
+ann_0033;unknown;unknown;unknown;unknown
+ann_0034;unknown;unknown;unknown;unknown
+ann_0035;yes;unknown;unknown;unknown
+ann_0036;no;Ermax;unknown;Kawasaki Z900 RS
+ann_0037;no;Blum;unknown;unknown
+ann_0038;no;Nike;unknown;unknown
+ann_0039;no;PJ Harlow;unknown;unknown
+ann_0040;unknown;unknown;unknown;unknown
+ann_0041;no;Scienscope;unknown;unknown
+ann_0042;no;SanDisk;unknown;unknown
+ann_0043;yes;unknown;unknown;unknown
+ann_0044;no;unknown;unknown;unknown
+ann_0045;no;Lab.C;unknown;unknown
+ann_0046;unknown;unknown;unknown;unknown
+ann_0047;yes;unknown;unknown;unknown
+ann_0048;no;Z Supply;unknown;unknown
+ann_0049;yes;unknown;unknown;unknown
+ann_0050;no;Hamilton;unknown;unknown
+ann_0051;yes;unknown;unknown;unknown
+ann_0052;no;Canidae;unknown;unknown
+ann_0053;yes;unknown;unknown;unknown
+ann_0054;no;Pinkfresh Studio;unknown;unknown
+ann_0055;no;Mad Rock;unknown;unknown
+ann_0056;unknown;unknown;unknown;unknown
+ann_0057;no;Samick;unknown;unknown
+ann_0058;unknown;unknown;unknown;unknown
+ann_0059;no;Flame King;unknown;unknown
+ann_0060;yes;unknown;unknown;unknown
+ann_0061;no;Wella;unknown;unknown
+ann_0062;unknown;unknown;unknown;unknown
+ann_0063;no;Carhartt WIP;unknown;unknown
+ann_0064;yes;unknown;unknown;unknown
+ann_0065;no;Amsterdam;unknown;unknown
+ann_0066;unknown;unknown;unknown;unknown
+ann_0067;yes;unknown;unknown;unknown
+ann_0068;no;Mirka;unknown;unknown
+ann_0069;yes;unknown;unknown;unknown
+ann_0070;yes;unknown;unknown;unknown
+ann_0071;unknown;unknown;unknown;unknown
+ann_0072;yes;unknown;unknown;Yamaha R1 (2012-2014)
+ann_0073;yes;unknown;unknown;unknown
+ann_0074;no;unknown;unknown;unknown
+ann_0075;yes;unknown;unknown;unknown
+ann_0076;unknown;unknown;unknown;unknown
+ann_0077;no;Apple;unknown;unknown
+ann_0078;no;unknown;unknown;unknown
+ann_0079;yes;unknown;unknown;unknown
+ann_0080;unknown;unknown;unknown;unknown
+ann_0081;unknown;unknown;unknown;unknown
+ann_0082;no;Lanka Kade;Sri Lanka;unknown
+ann_0083;no;Lester;unknown;Nissan Almera HB N15 (95-00)
+ann_0084;no;unknown;unknown;unknown
+ann_0085;no;STARR;unknown;unknown
+ann_0086;no;unknown;unknown;unknown
+ann_0087;unknown;unknown;unknown;unknown
+ann_0088;yes;unknown;unknown;unknown
+ann_0089;no;unknown;unknown;unknown
+ann_0090;yes;unknown;United States;unknown
+ann_0091;no;Silhouette;unknown;unknown
+ann_0092;no;Hikvision;unknown;unknown
+ann_0093;yes;unknown;unknown;unknown
+ann_0094;no;unknown;unknown;unknown
+ann_0095;unknown;unknown;unknown;unknown
+ann_0096;unknown;unknown;unknown;unknown
+ann_0097;yes;unknown;unknown;unknown
+ann_0098;unknown;unknown;unknown;unknown
+ann_0099;unknown;unknown;unknown;unknown
+ann_0100;no;LED Line;unknown;unknown
+ann_0101;yes;unknown;unknown;unknown
+ann_0102;no;Powerslide;unknown;unknown
+ann_0103;no;Smencils;unknown;unknown
+ann_0104;yes;unknown;unknown;unknown
+ann_0105;no;unknown;unknown;unknown
+ann_0106;no;Hurtta;unknown;unknown
+ann_0107;yes;unknown;Hong Kong;unknown
+ann_0108;unknown;unknown;unknown;unknown
+ann_0109;no;CZ-USA;unknown;unknown
+ann_0110;unknown;unknown;unknown;unknown
+ann_0111;yes;unknown;unknown;unknown
+ann_0112;no;Dragon;unknown;unknown
+ann_0113;unknown;unknown;unknown;unknown
+ann_0114;no;unknown;unknown;unknown
+ann_0115;yes;unknown;unknown;unknown
+ann_0116;yes;unknown;United States (Austin);unknown
+ann_0117;no;Rinker;unknown;unknown
+ann_0118;no;unknown;unknown;unknown
+ann_0119;unknown;unknown;unknown;unknown
+ann_0120;no;Bloch;unknown;unknown
+ann_0121;no;L'Oreal;unknown;unknown
+ann_0122;yes;unknown;unknown;unknown
+ann_0123;unknown;unknown;unknown;unknown
+ann_0124;no;Rapoo;unknown;unknown
+ann_0125;no;Muvit;unknown;Samsung Galaxy S5 (SM-G900)
+ann_0126;no;unknown;unknown;Q3
+ann_0127;unknown;unknown;unknown;unknown
+ann_0128;yes;unknown;United States;unknown
+ann_0129;no;BBC Earth;unknown;unknown
+ann_0130;yes;unknown;unknown;unknown
+ann_0131;unknown;unknown;unknown;unknown
+ann_0132;no;MEGE;unknown;unknown
+ann_0133;no;Semperfli;unknown;unknown
+ann_0134;yes;unknown;unknown;Microderm GLO System
+ann_0135;yes;unknown;unknown;unknown
+ann_0136;yes;unknown;unknown;unknown
+ann_0137;unknown;unknown;unknown;unknown
+ann_0138;unknown;unknown;unknown;unknown
+ann_0139;unknown;unknown;unknown;unknown
+ann_0140;unknown;unknown;unknown;unknown
+ann_0141;no;unknown;unknown;unknown
+ann_0142;unknown;unknown;unknown;unknown
+ann_0143;unknown;unknown;unknown;unknown
+ann_0144;no;TECE;unknown;unknown
+ann_0145;yes;unknown;unknown;unknown
+ann_0146;yes;unknown;unknown;unknown
+ann_0147;unknown;unknown;unknown;unknown
+ann_0148;no;Aoyue;unknown;unknown
+ann_0149;yes;unknown;unknown;unknown
+ann_0150;yes;unknown;unknown;unknown
+ann_0151;no;unknown;unknown;unknown
+ann_0152;unknown;unknown;unknown;unknown
+ann_0153;unknown;unknown;unknown;unknown
+ann_0154;yes;unknown;unknown;unknown
+ann_0155;no;WISE HAWK;unknown;unknown
+ann_0156;unknown;unknown;unknown;unknown
+ann_0157;unknown;unknown;unknown;unknown
+ann_0158;no;unknown;unknown;unknown
+ann_0159;unknown;unknown;unknown;unknown
+ann_0160;no;MISS TIME;unknown;unknown
+ann_0161;no;Jeep;unknown;unknown
+ann_0162;unknown;unknown;unknown;unknown
+ann_0163;no;La Primavera;unknown;unknown
+ann_0164;yes;unknown;unknown;unknown
+ann_0165;yes;unknown;unknown;Kawasaki ZX14R (2012-2018)
+ann_0166;yes;unknown;unknown;unknown
+ann_0167;unknown;unknown;unknown;unknown
+ann_0168;unknown;unknown;unknown;unknown
+ann_0169;no;Nike;unknown;unknown
+ann_0170;no;ProRituals;unknown;unknown
+ann_0171;no;WellCut;unknown;unknown
+ann_0172;unknown;unknown;unknown;unknown
+ann_0173;no;AMD;unknown;unknown
+ann_0174;yes;unknown;unknown;unknown
+ann_0175;unknown;unknown;unknown;unknown
+ann_0176;yes;unknown;unknown;unknown
+ann_0177;yes;unknown;unknown;unknown
+ann_0178;no;Camelleon;unknown;Brother HL-L6400DW
+ann_0179;yes;unknown;unknown;unknown
+ann_0180;yes;unknown;unknown;unknown
+ann_0181;no;GM (General Motors);unknown;unknown
+ann_0182;no;Vredestein;unknown;unknown
+ann_0183;no;unknown;unknown;unknown
+ann_0184;unknown;unknown;unknown;unknown
+ann_0185;no;Rotary;unknown;unknown
+ann_0186;no;Kaleen;unknown;unknown
+ann_0187;unknown;unknown;unknown;unknown
+ann_0188;no;Polisport;unknown;unknown
+ann_0189;unknown;unknown;unknown;unknown
+ann_0190;no;Ford;unknown;unknown
+ann_0191;no;Sigikid;unknown;unknown
+ann_0192;no;RVCA;unknown;unknown
+ann_0193;unknown;unknown;unknown;unknown
+ann_0194;unknown;unknown;unknown;unknown
+ann_0195;unknown;unknown;unknown;unknown
+ann_0196;unknown;unknown;unknown;unknown
+ann_0197;yes;unknown;unknown;unknown
+ann_0198;no;Wigzi;unknown;unknown
+ann_0199;no;BalystiK;unknown;unknown
+ann_0200;unknown;unknown;unknown;unknown
+ann_0201;yes;unknown;unknown;unknown
+ann_0202;unknown;unknown;unknown;unknown
+ann_0203;no;ELBA;unknown;unknown
+ann_0204;yes;unknown;unknown;unknown
+ann_0205;yes;unknown;unknown;unknown
+ann_0206;unknown;unknown;unknown;unknown
+ann_0207;no;Kahrs;unknown;unknown
+ann_0208;unknown;unknown;unknown;unknown
+ann_0209;no;Oxford University Press;unknown;unknown
+ann_0210;no;unknown;unknown;unknown
+ann_0211;unknown;unknown;unknown;unknown
+ann_0212;yes;unknown;unknown;unknown
+ann_0213;unknown;unknown;unknown;unknown
+ann_0214;unknown;unknown;unknown;unknown
+ann_0215;no;Glide Gear;unknown;unknown
+ann_0216;no;MMF Industries;unknown;unknown
+ann_0217;unknown;unknown;unknown;unknown
+ann_0218;no;WOCA;unknown;unknown
+ann_0219;no;Blue Diamond;unknown;unknown
+ann_0220;no;Illadelph;United States;unknown
+ann_0221;yes;unknown;unknown;unknown
+ann_0222;no;unknown;unknown;unknown
+ann_0223;yes;unknown;India;unknown
+ann_0224;no;unknown;unknown;unknown
+ann_0225;unknown;unknown;unknown;unknown
+ann_0226;yes;unknown;unknown;unknown
+ann_0227;no;Be-Total;unknown;unknown
+ann_0228;unknown;unknown;unknown;Toyota Landcruiser 75 Series (FJ/HJ75, FZJ/HZJ75)
+ann_0229;unknown;unknown;unknown;unknown
+ann_0230;no;FTD;unknown;unknown
+ann_0231;unknown;unknown;unknown;unknown
+ann_0232;unknown;unknown;unknown;unknown
+ann_0233;yes;unknown;unknown;unknown
+ann_0234;yes;unknown;unknown;unknown
+ann_0235;yes;unknown;unknown;unknown
+ann_0236;no;Arneg;unknown;unknown
+ann_0237;unknown;unknown;unknown;unknown
+ann_0238;yes;unknown;unknown;unknown
+ann_0239;yes;unknown;unknown;unknown
+ann_0240;no;Eibenstock;unknown;unknown
+ann_0241;no;unknown;unknown;unknown
+ann_0242;yes;unknown;unknown;unknown
+ann_0243;no;unknown;unknown;unknown
+ann_0244;no;unknown;unknown;unknown
+ann_0245;no;Hyper-Sonic;unknown;unknown
+ann_0246;unknown;unknown;unknown;unknown
+ann_0247;no;Mijing;unknown;unknown
+ann_0248;no;Cocon;unknown;unknown
+ann_0249;no;Lucide;unknown;unknown
+ann_0250;no;Kleen-Tex;unknown;unknown
+ann_0251;no;Brekina;unknown;unknown
+ann_0252;yes;unknown;unknown;unknown
+ann_0253;unknown;unknown;unknown;unknown
+ann_0254;no;Konica-Minolta;unknown;unknown
+ann_0255;yes;unknown;unknown;unknown
+ann_0256;no;StudioLight;unknown;unknown
+ann_0257;unknown;unknown;unknown;unknown
+ann_0258;no;unknown;unknown;iPhone Xs
+ann_0259;yes;unknown;unknown;unknown
+ann_0260;yes;unknown;unknown;unknown
+ann_0261;no;unknown;unknown;unknown
+ann_0262;unknown;unknown;unknown;unknown
+ann_0263;yes;unknown;unknown;unknown
+ann_0264;yes;unknown;unknown;unknown
+ann_0265;yes;unknown;unknown;unknown
+ann_0266;unknown;unknown;unknown;unknown
+ann_0267;no;SMEG;unknown;unknown
+ann_0268;unknown;unknown;unknown;unknown
+ann_0269;yes;unknown;unknown;unknown
+ann_0270;unknown;unknown;unknown;unknown
+ann_0271;no;Occasions;unknown;unknown
+le Op;;;;
+ann_0272;no;Shimano;unknown;unknown
+ann_0273;unknown;unknown;unknown;unknown
+ann_0274;no;Intex;unknown;unknown
+ann_0275;yes;unknown;unknown;unknown
+ann_0276;no;Sanus;unknown;unknown
+ann_0277;no;Portia and Scarlett;unknown;unknown
+ann_0278;yes;unknown;unknown;unknown
+ann_0279;no;unknown;unknown;unknown
+ann_0280;no;unknown;unknown;unknown
+ann_0281;no;Longray;unknown;Longray Carryall/Basic ULV Fogger
+ann_0282;yes;unknown;unknown;unknown
+ann_0283;yes;unknown;unknown;unknown
+ann_0284;no;KIP;unknown;unknown
+ann_0285;no;Olfa;unknown;unknown
+ann_0286;yes;unknown;Italy;unknown
+ann_0287;no;unknown;unknown;unknown
+ann_0288;unknown;unknown;unknown;unknown
+ann_0289;no;Weseta;unknown;unknown
+ann_0290;no;Bona Vida Hemp;Colorado (USA);unknown
+ann_0291;no;Galaxy;unknown;unknown
+ann_0292;yes;unknown;unknown;unknown
+ann_0293;yes;unknown;unknown;Peugeot 205
+ann_0294;no;Auraveda;unknown;unknown
+ann_0295;unknown;unknown;unknown;Huawei Watch GT
+ann_0296;unknown;unknown;unknown;unknown
+ann_0297;unknown;unknown;unknown;unknown
+ann_0298;no;unknown;unknown;unknown
+ann_0299;unknown;unknown;unknown;unknown
+ann_0300;no;LYSCHY;unknown;unknown
+ann_0301;no;Xiaomi;unknown;unknown
+ann_0302;no;Tissot;unknown;unknown
+ann_0303;unknown;unknown;unknown;unknown
+ann_0304;yes;unknown;unknown;unknown
+ann_0305;yes;unknown;unknown;unknown
+ann_0306;no;AXI;unknown;unknown
+ann_0307;no;RTECH;unknown;unknown
+ann_0308;no;Inverto;unknown;unknown
+ann_0309;yes;unknown;unknown;unknown
+ann_0310;yes;unknown;unknown;unknown
+ann_0311;no;Crafter's Workshop;unknown;unknown
+ann_0312;no;Capri Blue;unknown;unknown
+ann_0313;no;unknown;unknown;unknown
+ann_0314;yes;unknown;unknown;unknown
+ann_0315;yes;unknown;unknown;unknown
+ann_0316;no;Canon;unknown;unknown
+ann_0317;unknown;unknown;unknown;unknown
+ann_0318;yes;unknown;unknown;unknown
+ann_0319;yes;unknown;Indonesia;unknown
+ann_0320;no;Greenington;unknown;unknown
+ann_0321;no;unknown;unknown;unknown
+ann_0322;no;Sansai;unknown;unknown
+ann_0323;unknown;unknown;unknown;unknown
+ann_0324;no;LEGO;unknown;unknown
+ann_0325;yes;unknown;unknown;unknown
+ann_0326;yes;unknown;unknown;unknown
+ann_0327;no;Supreme;unknown;unknown
+ann_0328;unknown;unknown;unknown;unknown
+ann_0329;yes;unknown;unknown;unknown
+ann_0330;unknown;unknown;unknown;unknown
+ann_0331;no;unknown;unknown;unknown
+ann_0332;no;Ritter Sport;unknown;unknown
+ann_0333;yes;unknown;unknown;unknown
+ann_0334;yes;unknown;unknown;unknown
+ann_0335;unknown;unknown;unknown;unknown
+ann_0336;no;unknown;unknown;unknown
+ann_0337;unknown;unknown;unknown;unknown
+ann_0338;unknown;unknown;unknown;unknown
+ann_0339;yes;unknown;unknown;unknown
+ann_0340;unknown;unknown;unknown;unknown
+ann_0341;yes;unknown;unknown;unknown
+ann_0342;no;RSPB Sales Ltd;unknown;unknown
+ann_0343;yes;unknown;unknown;unknown
+ann_0344;no;OASIS;unknown;unknown
+ann_0345;unknown;unknown;unknown;unknown
+ann_0346;yes;unknown;unknown;unknown
+ann_0347;unknown;unknown;unknown;unknown
+ann_0348;yes;unknown;India;unknown
+ann_0349;no;Zohara;unknown;unknown
+ann_0350;no;unknown;unknown;unknown
+ann_0351;unknown;unknown;unknown;unknown
+ann_0352;no;Pandora;unknown;unknown
+ann_0353;no;Knit Knacks;unknown;unknown
+ann_0354;no;Moschino;unknown;unknown
+ann_0355;yes;unknown;unknown;unknown
+ann_0356;no;unknown;unknown;unknown
+ann_0357;no;XCEL;unknown;unknown
+ann_0358;no;Garmin;unknown;Garmin Vivoactive
+ann_0359;no;Mondo Macabro;unknown;unknown
+ann_0360;unknown;unknown;unknown;unknown
+ann_0361;yes;unknown;unknown;unknown
+ann_0362;yes;unknown;unknown;unknown
+ann_0363;no;Canon;unknown;unknown
+ann_0364;yes;unknown;unknown;unknown
+ann_0365;unknown;unknown;unknown;unknown

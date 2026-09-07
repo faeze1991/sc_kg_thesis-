@@ -1,7 +1,17 @@
-
 # data files
 data/raw/
 data/extracted/
+
+# generated extraction/fetch outputs - large, regenerable, not source
+data/interim/*.jsonl
+data/interim/*.jsonl.bak
+data/interim/*.log
+data/interim/edge_cases/
+data/interim/athena_lookup_results_*.csv
+data/interim/athena_test_*.csv
+data/interim/stage_b_checkpoint_*.json
+data/interim/kg_graph.gpickle
+data/interim/kg_graph.graphml
 
 # python cache
 __pycache__/
