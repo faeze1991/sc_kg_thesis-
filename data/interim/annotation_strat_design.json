@@ -1,0 +1,32 @@
+{
+  "seed": 2026,
+  "n_pos": 40,
+  "n_neg": 40,
+  "universe_size": 279072,
+  "strata": {
+    "manufactures": {
+      "pos_size": 35730,
+      "neg_size": 243342,
+      "pos_drawn": 40,
+      "neg_drawn": 40
+    },
+    "has_brand": {
+      "pos_size": 126813,
+      "neg_size": 152259,
+      "pos_drawn": 40,
+      "neg_drawn": 40
+    },
+    "made_in": {
+      "pos_size": 35966,
+      "neg_size": 243106,
+      "pos_drawn": 40,
+      "neg_drawn": 40
+    },
+    "is_component_of": {
+      "pos_size": 40291,
+      "neg_size": 238781,
+      "pos_drawn": 40,
+      "neg_drawn": 40
+    }
+  }
+}
