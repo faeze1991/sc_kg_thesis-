@@ -82,7 +82,7 @@ def build_fuzzy_clusters(names: list, threshold: int = FUZZY_MATCH_THRESHOLD) ->
         cluster_list = blocks[key]
         matched = False
         for rep, members in cluster_list:
-            score = fuzz.token_sort_ratio(name, rep)
+            score = fuzz.token_sort_ratio(name.lower(), rep.lower())
             if score >= threshold:
                 members.append(name)
                 matched = True

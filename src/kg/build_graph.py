@@ -176,6 +176,8 @@ GENERIC_PARENT_STOPLIST = {
     "vehicles", "vehicle", "furniture", "refrigerator", "face mask",
     "hoodie", "car", "cars", "appliance", "appliances", "electronics", "new vehicle", "new vehicles",
     "accessories", "accessory", "parts", "part", "product", "products",
+    "jewelry", "bracelet", "watch", "watches", "jacket", "apparel", "bag", "bags",
+    "clutch", "chest of drawers", "used cars", "used vehicles", "clothing",
 }
 
 
