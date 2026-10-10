@@ -1,0 +1,6 @@
+PREFIX sc: <https://w3id.org/sckg/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+# CQ5: products with multiple origin claims (not necessarily contradictions)
+SELECT (COUNT(*) AS ?n) WHERE {
+  { SELECT ?p WHERE { ?p sc:madeIn ?l } GROUP BY ?p HAVING (COUNT(DISTINCT ?l) > 1) }
+}

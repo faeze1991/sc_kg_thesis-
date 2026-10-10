@@ -1,0 +1,7 @@
+PREFIX sc: <https://w3id.org/sckg/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+# CQ8 part A: company pairs linked to the same product (any page)
+SELECT (COUNT(*) AS ?n) WHERE {
+  { SELECT DISTINCT ?c1 ?c2 ?p WHERE {
+      ?c1 sc:linkedTo ?p . ?c2 sc:linkedTo ?p . FILTER(STR(?c1) < STR(?c2)) } }
+}

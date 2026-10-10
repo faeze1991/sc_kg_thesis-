@@ -1,0 +1,25 @@
+config,page_set,cq5_multi_origin_products,cq6_chains,cq7_chains,cq8_candidate_pairs,edges,edges_has_brand,edges_is_component_of,edges_made_in,edges_manufactures,edges_offers,made_in_country,made_in_region,made_in_subdivision,made_in_unresolved,nodes,nodes_company,nodes_location,nodes_product,page_brand_conflicts,pages,pages_with_product,pages_without_product,parent_ambiguous,parent_generic_skipped,parent_linked_to_product,parent_page_scoped,parent_self_skipped,parent_shared_specific,products_canonical,products_parent,products_parent_family_or_unspecific,products_source,route1_clusters_accepted,route1_clusters_rejected,route1_pages_merged,route2_groups_accepted,route2_names_with_different_brands,route2_pages_merged,route3_candidates,unresolved_top
+qwen_single,full,1,1,27,2362,414414,89745,8982,23920,18358,273409,21757,490,1720,6129,592874,311606,436,280832,3377,280194,273553,6641,4,36,36,5855,5,3092,1304,2998,5855,270675,1079,193,2319,225,147,559,69,Imported (698); Korea (157); Los Angeles (104); the USA (76); London (62); Russia (51); imported (40); U.S. (39); Melbourne (39); Italien (35)
+qwen_single,common,1,1,27,2221,409118,89049,8926,23743,18259,269141,21607,484,1699,6054,581443,304442,431,276570,3305,273007,269277,3730,4,36,36,5814,5,3077,1257,2984,5814,266515,1041,190,2226,216,135,536,63,Imported (689); Korea (156); Los Angeles (103); the USA (76); London (62); Russia (50); imported (40); U.S. (39); Melbourne (39); Italien (35)
+qwen_iter,full,2,2,309,2681,454194,107601,28114,24489,17826,276164,22620,493,1424,6097,622073,319860,398,301815,4434,280126,276287,3839,8,8,328,14982,1690,12818,1405,12286,14982,273142,1100,213,2365,305,179,780,58,Imported (890); Made in the USA (353); Made in USA (156); Korea (139); Los Angeles (101); London (70); Russia (66); Made in Italy (56); MADE IN USA (48); Made in America (43)
+qwen_iter,common,2,2,303,2467,447082,106669,27931,24312,17719,270451,22467,483,1410,6052,609191,312750,396,296045,4330,273007,270569,2438,3,8,320,14899,1683,12723,1320,12201,14899,267625,1037,207,2218,283,145,726,53,Imported (880); Made in the USA (353); Made in USA (155); Korea (138); Los Angeles (100); London (70); Russia (64); Made in Italy (56); MADE IN USA (48); Made in America (43)
+llama_single,full,0,18,142,2344,401565,96484,14366,22351,27785,240579,21078,492,836,2863,553059,281998,321,270740,3499,279594,258768,20826,41,463,170,10217,7,3983,1482,3611,10217,255430,958,188,2031,524,225,1307,58,Korea (172); Los Angeles (83); U.S. (68); London (58); Russia (54); Imported (43); Italien (40); Китай (31); New York City (26); The Netherlands (25)
+llama_single,common,0,18,140,2301,400337,96211,14297,22312,27722,239795,21042,492,833,2851,547490,277437,321,269732,3478,273007,257804,15203,41,459,168,10160,7,3973,1469,3601,10160,254502,951,186,2014,518,218,1288,58,Korea (172); Los Angeles (83); U.S. (68); London (58); Russia (53); Imported (42); Italien (40); Китай (29); New York City (26); The Netherlands (25)
+llama_iter,full,3,2,330,2680,447150,109982,30934,23922,15302,267010,22673,538,780,1970,597906,302401,309,295196,4650,273625,267398,6227,51,376,367,21293,26,9288,1481,8371,21293,264051,1000,213,2129,481,220,1218,51,"Imported (272); Korea (159); London (74); Russia (64); Los Angeles (38); Imported 
+
+Since ""Imported"" is stated, it implies the product was manufactured outside of the country where the company is based, but the exact country is not specified. Therefore, the answer is:
+
+unknown (27); Holland (26); New York City (23); The Netherlands (22); Imported 
+
+Since ""Imported"" is stated, but no specific country is mentioned, the correct answer would be:
+
+unknown (21)"
+llama_iter,common,3,2,330,2657,446185,109746,30869,23859,15275,266436,22617,535,776,1958,596628,301748,309,294571,4620,273007,266823,6184,51,376,365,21248,25,9270,1475,8358,21248,263490,997,211,2123,478,220,1210,51,"Imported (269); Korea (159); London (74); Russia (63); Los Angeles (38); Imported 
+
+Since ""Imported"" is stated, it implies the product was manufactured outside of the country where the company is based, but the exact country is not specified. Therefore, the answer is:
+
+unknown (27); Holland (26); New York City (23); The Netherlands (22); Imported 
+
+Since ""Imported"" is stated, but no specific country is mentioned, the correct answer would be:
+
+unknown (20)"

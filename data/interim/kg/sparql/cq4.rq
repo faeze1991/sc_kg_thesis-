@@ -1,0 +1,5 @@
+PREFIX sc: <https://w3id.org/sckg/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+# CQ4: companies with the most manufactures links (plausibility check)
+SELECT ?company (COUNT(?p) AS ?n) WHERE { ?c sc:manufactures ?p . ?c rdfs:label ?company }
+GROUP BY ?company ORDER BY DESC(?n) LIMIT 10

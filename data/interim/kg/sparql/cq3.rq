@@ -1,0 +1,7 @@
+PREFIX sc: <https://w3id.org/sckg/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+# CQ3: distribution of relation types
+SELECT ?relation (COUNT(*) AS ?n) WHERE {
+  ?s ?relation ?o .
+  FILTER(?relation IN (sc:manufactures, sc:hasBrand, sc:madeIn, sc:isComponentOf, sc:offers))
+} GROUP BY ?relation ORDER BY DESC(?n)

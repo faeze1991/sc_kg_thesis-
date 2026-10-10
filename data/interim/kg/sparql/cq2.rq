@@ -1,0 +1,7 @@
+PREFIX sc: <https://w3id.org/sckg/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+# CQ2: for a product, who manufactures it and where is it made?
+SELECT ?product ?manufacturer ?location WHERE {
+  ?m sc:manufactures ?p . ?p sc:madeIn ?l .
+  ?p rdfs:label ?product . ?m rdfs:label ?manufacturer . ?l rdfs:label ?location .
+} LIMIT 5

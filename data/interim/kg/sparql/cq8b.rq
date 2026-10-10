@@ -1,0 +1,9 @@
+PREFIX sc: <https://w3id.org/sckg/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+# CQ8 part B: of those, pairs where one page supports both links
+SELECT (COUNT(*) AS ?n) WHERE {
+  { SELECT DISTINCT ?c1 ?c2 ?p WHERE {
+      ?a1 sc:sourceDomain ?d ; sc:product ?p ; sc:company ?c1 .
+      ?a2 sc:sourceDomain ?d ; sc:product ?p ; sc:company ?c2 .
+      FILTER(STR(?c1) < STR(?c2)) } }
+}

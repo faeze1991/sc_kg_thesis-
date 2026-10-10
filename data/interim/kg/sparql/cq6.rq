@@ -1,0 +1,4 @@
+PREFIX sc: <https://w3id.org/sckg/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+# CQ6: component -> isComponentOf -> parent <- manufactures <- company
+SELECT (COUNT(*) AS ?n) WHERE { ?c sc:isComponentOf ?p . ?m sc:manufactures ?p }
