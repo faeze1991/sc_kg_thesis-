@@ -1,0 +1,13 @@
+gold_set,system,gold_pages,scored_pages,missing_pages
+strat,qwen_single,320,320,0
+strat,qwen_iter,320,319,1
+strat,llama_single,320,320,0
+strat,llama_iter,320,312,8
+strat,classical_svm,320,320,0
+strat,classical_lr,320,320,0
+strat_visible,qwen_single,320,320,0
+strat_visible,qwen_iter,320,319,1
+strat_visible,llama_single,320,320,0
+strat_visible,llama_iter,320,312,8
+strat_visible,classical_svm,320,320,0
+strat_visible,classical_lr,320,320,0

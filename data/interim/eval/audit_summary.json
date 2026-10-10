@@ -1,0 +1,129 @@
+{
+  "universe": 280238,
+  "configs": {
+    "qwen_single": {
+      "records": 280194,
+      "unparseable_lines": 0,
+      "duplicate_domains": 0,
+      "status": {
+        "extracted": 280194
+      },
+      "missing_pages": 44,
+      "records_not_in_fetched_pages": 0,
+      "missing_field": {},
+      "non_string": {},
+      "empty_string": {},
+      "manufactures_invalid_values": {},
+      "suspicious_values": {
+        "product": 9441,
+        "is_component_of": 31,
+        "distributed_by": 36,
+        "company": 16,
+        "made_in": 12
+      },
+      "records_with_any_problem": 9524
+    },
+    "qwen_iter": {
+      "records": 280126,
+      "unparseable_lines": 0,
+      "duplicate_domains": 0,
+      "status": {
+        "extracted": 280126
+      },
+      "missing_pages": 112,
+      "records_not_in_fetched_pages": 0,
+      "missing_field": {},
+      "non_string": {},
+      "empty_string": {
+        "product": 1
+      },
+      "manufactures_invalid_values": {},
+      "suspicious_values": {
+        "product": 10096,
+        "is_component_of": 695,
+        "made_in": 127,
+        "distributed_by": 157,
+        "company": 16
+      },
+      "records_with_any_problem": 11032
+    },
+    "llama_single": {
+      "records": 279594,
+      "unparseable_lines": 0,
+      "duplicate_domains": 0,
+      "status": {
+        "extracted": 279594
+      },
+      "missing_pages": 644,
+      "records_not_in_fetched_pages": 0,
+      "missing_field": {},
+      "non_string": {},
+      "empty_string": {
+        "product": 1
+      },
+      "manufactures_invalid_values": {},
+      "suspicious_values": {
+        "product": 2851,
+        "company": 31,
+        "distributed_by": 278,
+        "is_component_of": 48
+      },
+      "records_with_any_problem": 3206
+    },
+    "llama_iter": {
+      "records": 273625,
+      "unparseable_lines": 0,
+      "duplicate_domains": 0,
+      "status": {
+        "extracted": 273625
+      },
+      "missing_pages": 6613,
+      "records_not_in_fetched_pages": 0,
+      "missing_field": {},
+      "non_string": {},
+      "empty_string": {
+        "product": 1
+      },
+      "manufactures_invalid_values": {},
+      "suspicious_values": {
+        "product": 3791,
+        "distributed_by": 497,
+        "company": 31,
+        "made_in": 354,
+        "is_component_of": 78
+      },
+      "records_with_any_problem": 4725
+    }
+  },
+  "logs": {
+    "qwen_iter": {
+      "path": "data/interim/extraction_skipped_iterative_full.log",
+      "exists": true,
+      "domains": 112,
+      "reasons": {
+        "entity_extraction": 112
+      },
+      "overlap_with_missing_qwen_single": 14,
+      "overlap_with_missing_qwen_iter": 112,
+      "overlap_with_missing_llama_single": 8,
+      "overlap_with_missing_llama_iter": 24
+    },
+    "llama_single(?)": {
+      "path": "data/interim/extraction_skipped_llama70b.log",
+      "exists": true,
+      "domains": 26,
+      "reasons": {
+        "404 Client Error: Not Found for url: htt": 20,
+        "Extra data: line 3 column 1 (char 155)": 2,
+        "Extra data: line 3 column 1 (char 158)": 1,
+        "Extra data: line 3 column 1 (char 191)": 1,
+        "Expecting value: line 1 column 1 (char 0": 1,
+        "Extra data: line 3 column 1 (char 193)": 1
+      },
+      "overlap_with_missing_qwen_single": 0,
+      "overlap_with_missing_qwen_iter": 0,
+      "overlap_with_missing_llama_single": 6,
+      "overlap_with_missing_llama_iter": 1
+    }
+  }
+}
