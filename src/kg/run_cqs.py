@@ -5,8 +5,10 @@ Loads the pickled graph built by build_graph.py and runs CQ1, CQ2, CQ6, CQ7, CQ8
 against real, automatically-selected examples from the graph itself (no need to
 know company/product names in advance).
 
-Usage:
-    python3 src/kg/run_cqs.py
+Usage (from the project root):
+    python3 -m src.kg.run_cqs qwen
+    python3 -m src.kg.run_cqs llama
+(replaces the duplicate run_cqs_llama.py)
 """
 
 import pickle
@@ -19,11 +21,13 @@ from src.kg.build_graph import (
     cq1_products_manufactured_by,
     cq2_manufacturer_and_origin,
     cq6_component_chain,
-    cq7_component_to_distributor_chain,
+    cq7_component_to_brand_chain,
     cq8_hidden_multihop_companies,
 )
 
-GRAPH_PATH = "data/interim/kg_graph.gpickle"
+GRAPHS = {"qwen": "data/interim/kg_graph.gpickle",
+          "llama": "data/interim/kg_graph_llama.gpickle"}
+GRAPH_PATH = GRAPHS["qwen"]
 
 
 def load_graph():
@@ -65,7 +69,11 @@ def pick_example_components(G, n=5):
 
 
 if __name__ == "__main__":
-    print("[INFO] Loading graph...")
+    model = sys.argv[1] if len(sys.argv) > 1 else "qwen"
+    if model not in GRAPHS:
+        sys.exit(f"usage: python3 -m src.kg.run_cqs [{'|'.join(GRAPHS)}]")
+    GRAPH_PATH = GRAPHS[model]
+    print(f"[INFO] Loading graph ({model}): {GRAPH_PATH}")
     G = load_graph()
     print(f"[INFO] Loaded: {G.number_of_nodes()} nodes, {G.number_of_edges()} edges")
 
@@ -128,18 +136,18 @@ if __name__ == "__main__":
 
     # --- CQ7 ---
     print("\n" + "=" * 70)
-    print("CQ7: component -> parent product -> distributed_by <- distributor")
+    print("CQ7: component -> is_component_of -> parent product -> has_brand -> brand")
     print("=" * 70)
     example_components = pick_example_components(G, n=200)
     found_cq7 = 0
     for comp in example_components:
-        chains = cq7_component_to_distributor_chain(G, comp)
+        chains = cq7_component_to_brand_chain(G, comp)
         if chains:
             found_cq7 += 1
             print(f"\n-- component: {comp} --")
             for c in chains:
                 print(f"  {c['component']} -> is_component_of -> {c['parent_product']} "
-                      f"<- distributed_by <- {c['distributor']}")
+                      f"-> has_brand -> {c['brand']}")
             if found_cq7 >= 5:
                 break
     if found_cq7 == 0:
