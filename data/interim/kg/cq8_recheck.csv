@@ -1,0 +1,101 @@
+audit_id,config,verdict,retained,product
+cq8_pairs_001,qwen_single,incorrect,no,LG UHD TV
+cq8_pairs_002,qwen_single,incorrect,yes,ABUS Ultra 410 U-lock
+cq8_pairs_003,qwen_single,incorrect,yes,EXO Kayaks Party Rexy – Factory 2nd
+cq8_pairs_004,qwen_single,incorrect,no,Mazda Certified Pre-Owned
+cq8_pairs_005,qwen_single,correct,yes,TP-LINK Antena Omnidireccional Exterior 15dBi 2.4G
+cq8_pairs_006,qwen_single,unclear,yes,Champion packable jacket
+cq8_pairs_007,qwen_single,incorrect,yes,2020 Hyundai Tucson SE AWD Sport Utility
+cq8_pairs_008,qwen_single,correct,yes,PCU:SERVICE PARTS:EXP MPC2003
+cq8_pairs_009,qwen_single,unclear,yes,Custom Ultra Cotton T-Shirt
+cq8_pairs_010,qwen_single,incorrect,no,New vehicle
+cq8_pairs_011,qwen_single,incorrect,yes,Lambre 1 - Joy of Pink от Lacoste
+cq8_pairs_012,qwen_single,unclear,yes,2020 Toyota Camry
+cq8_pairs_013,qwen_single,correct,yes,His Favorite Ford F1 Pickup by Teleflora
+cq8_pairs_014,qwen_single,correct,yes,Universal Heavy-Duty Harness
+cq8_pairs_015,qwen_single,incorrect,no,PLC Modules
+cq8_pairs_016,qwen_single,incorrect,yes,KN95 Certified Face Mask (Box of 10)
+cq8_pairs_017,qwen_single,incorrect,no,vehicle
+cq8_pairs_018,qwen_single,unclear,yes,Custom Ultra Cotton T-Shirt
+cq8_pairs_019,qwen_single,incorrect,no,"GRAY, CLOTH SEAT TRIM"
+cq8_pairs_020,qwen_single,unclear,yes,13 Day Israel & Rome Fully Escorted Holy Land Tour
+cq8_pairs_021,qwen_single,unclear,no,2018 Honda CRV EX-L AWD
+cq8_pairs_022,qwen_single,correct,yes,Flashforge Creator Pro
+cq8_pairs_023,qwen_single,correct,yes,Turbo HD DVR DVR-208G-F1 SERIES Hilook
+cq8_pairs_024,qwen_single,incorrect,no,premium luxury car
+cq8_pairs_025,qwen_single,incorrect,no,New vehicle
+cq8_pairs_026,qwen_iter,incorrect,no,Collonil
+cq8_pairs_027,qwen_iter,correct,yes,T-Classic
+cq8_pairs_028,qwen_iter,correct,yes,Magic: The Gathering - Core 2021 Booster Pack
+cq8_pairs_029,qwen_iter,correct,yes,Little Jellycat Farm Tails Bamboo Divided Plate
+cq8_pairs_030,qwen_iter,correct,yes,GoPro Dual Battery Charger with Battery for HERO5 HERO6 HERO7 Black
+cq8_pairs_031,qwen_iter,incorrect,yes,Ultra Limited in Vivid Black with Black Finish
+cq8_pairs_032,qwen_iter,unclear,yes,Kilburn Portable Active Stereo Speaker
+cq8_pairs_033,qwen_iter,correct,yes,Teleflora's Sterling Love Bouquet
+cq8_pairs_034,qwen_iter,correct,yes,You're The Sweetest Bouquet
+cq8_pairs_035,qwen_iter,correct,yes,Positioned to Win! by Joan Hunter and Julie Meyer
+cq8_pairs_036,qwen_iter,correct,yes,Handpainted Bright Ceramic Plates - Green
+cq8_pairs_037,qwen_iter,incorrect,yes,LED-Lit Heart-Shaped Rose Wreath
+cq8_pairs_038,qwen_iter,unclear,no,2018 Acura RDX
+cq8_pairs_039,qwen_iter,correct,yes,6 SPEED REVERSE GEAR KIT – HARLEY FLH TOURING (’09 & UP) HYDRAULIC CLUTCH
+cq8_pairs_040,qwen_iter,unclear,yes,YST350LS Sport-Tek Youth Long Sleeve PosiCharge Competitor Tee
+cq8_pairs_041,qwen_iter,incorrect,yes,"Cable de antena coaxial Receptor/Pared 1,5 m blanco"
+cq8_pairs_042,qwen_iter,incorrect,yes,Kilburn Portable Active Stereo Speaker
+cq8_pairs_043,qwen_iter,correct,yes,"Scheppach bőrkorong 200 x 30 x 12 mm (Tiger 2000s, 2500 / nsm 200 / WG 08)"
+cq8_pairs_044,qwen_iter,incorrect,no,Premium luxury cars
+cq8_pairs_045,qwen_iter,unclear,no,Mercedes-Benz GLA
+cq8_pairs_046,qwen_iter,correct,yes,10 Yard Dumpster Rental FL- Load & Go
+cq8_pairs_047,qwen_iter,correct,yes,Two Wise Chimps CBD Chewing Gum 45mg
+cq8_pairs_048,qwen_iter,correct,yes,Dodge Cummins 5.9L/6.7L 2005 - 2012 / South Bend Clutch SDD3250-GK
+cq8_pairs_049,qwen_iter,incorrect,no,Jaguar vehicle
+cq8_pairs_050,qwen_iter,incorrect,yes,Kilburn Portable Active Stereo Speaker
+cq8_pairs_051,llama_single,correct,yes,"Traeger Grill, Ironwood 650 + Pellet Sensor"
+cq8_pairs_052,llama_single,correct,yes,Blackmagic Design ATEM 1 M/E Production Studio 4K
+cq8_pairs_053,llama_single,incorrect,yes,2020 Chevrolet Silverado 2500HD LTZ
+cq8_pairs_054,llama_single,unclear,no,2020 Honda Accord Sport
+cq8_pairs_055,llama_single,incorrect,no,Volkswagen vehicles
+cq8_pairs_056,llama_single,incorrect,yes,LG French Door refrigerator
+cq8_pairs_057,llama_single,incorrect,yes,Chevrolet Trax LT
+cq8_pairs_058,llama_single,incorrect,yes,Brigade El Dorado
+cq8_pairs_059,llama_single,incorrect,no,Harley-Davidson motorcycles
+cq8_pairs_060,llama_single,correct,yes,Tactical Black Twist Pen with Extra Refill
+cq8_pairs_061,llama_single,incorrect,no,vehicles
+cq8_pairs_062,llama_single,correct,yes,Mohawk Industries True Design Natural Pecan Waterproof Flooring
+cq8_pairs_063,llama_single,correct,yes,The Red Goat | K-Cup Keurig Compatible Pods (72 pack)
+cq8_pairs_064,llama_single,incorrect,no,Lexus vehicles
+cq8_pairs_065,llama_single,incorrect,no,Toyota Camry
+cq8_pairs_066,llama_single,incorrect,no,vehicles
+cq8_pairs_067,llama_single,incorrect,yes,MacBook Pro
+cq8_pairs_068,llama_single,correct,yes,Apple iPhone 11 Pro Max
+cq8_pairs_069,llama_single,incorrect,yes,"Buddha Theme, set of 2 - Bob N Betty"
+cq8_pairs_070,llama_single,unclear,yes,Ram 1500
+cq8_pairs_071,llama_single,correct,yes,Bright Skin Licorice Root Exfoliating Peel
+cq8_pairs_072,llama_single,incorrect,yes,2017 Honda HR-V EX-L
+cq8_pairs_073,llama_single,correct,yes,Pjur Med Clean Spray 100ml
+cq8_pairs_074,llama_single,incorrect,yes,CLA 250 4MATIC
+cq8_pairs_075,llama_single,incorrect,yes,go-eCharger HOME+ 11 kW
+cq8_pairs_076,llama_iter,unclear,no,Champion Backpack
+cq8_pairs_077,llama_iter,incorrect,yes,Inside Out Hoop Earrings
+cq8_pairs_078,llama_iter,correct,yes,Teleflora's Cool Camper Succulent Garden
+cq8_pairs_079,llama_iter,incorrect,yes,luxury cars (Mercedes-Benz)
+cq8_pairs_080,llama_iter,correct,yes,Jordan Retro 11 'Platinum Tint'
+cq8_pairs_081,llama_iter,incorrect,yes,Invidia Q300 Cat-back Exhaust
+cq8_pairs_082,llama_iter,incorrect,yes,vehicle (specific model not specified)
+cq8_pairs_083,llama_iter,incorrect,yes,MacBook Pro with Retina display
+cq8_pairs_084,llama_iter,unclear,yes,2015 Chevrolet Cruze
+cq8_pairs_085,llama_iter,incorrect,yes,Corona Pine 6 Drawer Chest
+cq8_pairs_086,llama_iter,incorrect,yes,2020 Chevrolet Trax LT
+cq8_pairs_087,llama_iter,correct,yes,Endoca CBD Suppository
+cq8_pairs_088,llama_iter,incorrect,yes,2013 Hyundai Santa Fe Sport AWD
+cq8_pairs_089,llama_iter,incorrect,no,Hyundai vehicle
+cq8_pairs_090,llama_iter,unclear,yes,Apple iPhone 8
+cq8_pairs_091,llama_iter,unclear,yes,Mercedes-Benz GLA
+cq8_pairs_092,llama_iter,correct,yes,Teleflora's Gem Of My Heart Bouquet
+cq8_pairs_093,llama_iter,incorrect,no,Mazda vehicles
+cq8_pairs_094,llama_iter,incorrect,no,Plush Toy
+cq8_pairs_095,llama_iter,incorrect,no,NFL jersey
+cq8_pairs_096,llama_iter,correct,yes,Scheppach bőrkorong 200 x 30 x 12 mm
+cq8_pairs_097,llama_iter,incorrect,no,NFL jerseys
+cq8_pairs_098,llama_iter,incorrect,yes,Alen BreatheSmart Classic Large Room Air Purifier
+cq8_pairs_099,llama_iter,correct,yes,Microsoft Office Home and Business 2010
+cq8_pairs_100,llama_iter,incorrect,no,Honda vehicles
