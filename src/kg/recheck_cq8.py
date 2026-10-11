@@ -42,7 +42,7 @@ def main():
 
     rows = list(load_workbook(audit_path, read_only=True)["cq8_pairs"].values)
     H = list(rows[0])
-    audited = [dict(zip(H, r)) for r in rows[1:] if r[0]]
+    audited = [dict(zip(H, r)) for r in rows[1:] if r and r[0]]
 
     pairs, graphs = {}, {}
     for c in CONFIGS:
