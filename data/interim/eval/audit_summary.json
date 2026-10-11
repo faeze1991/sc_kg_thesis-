@@ -96,34 +96,67 @@
     }
   },
   "logs": {
+    "qwen_single": {
+      "path": "data/interim/extraction_skipped_full_qwen.log",
+      "exists": true,
+      "logged_domains": 44,
+      "missing_pages": 44,
+      "missing_explained_by_log": 44,
+      "logged_but_present_in_output": 0,
+      "error_categories": {
+        "invalid JSON output": 41,
+        "timeout": 3
+      },
+      "failing_call": {
+        "single call": 44
+      }
+    },
     "qwen_iter": {
       "path": "data/interim/extraction_skipped_iterative_full.log",
       "exists": true,
-      "domains": 112,
-      "reasons": {
+      "logged_domains": 112,
+      "missing_pages": 112,
+      "missing_explained_by_log": 112,
+      "logged_but_present_in_output": 0,
+      "error_categories": {
+        "invalid JSON output": 109,
+        "other": 3
+      },
+      "failing_call": {
         "entity_extraction": 112
-      },
-      "overlap_with_missing_qwen_single": 14,
-      "overlap_with_missing_qwen_iter": 112,
-      "overlap_with_missing_llama_single": 8,
-      "overlap_with_missing_llama_iter": 24
+      }
     },
-    "llama_single(?)": {
-      "path": "data/interim/extraction_skipped_llama70b.log",
+    "llama_single": {
+      "path": "data/interim/extraction_skipped_llama70b_full.log",
       "exists": true,
-      "domains": 26,
-      "reasons": {
-        "404 Client Error: Not Found for url: htt": 20,
-        "Extra data: line 3 column 1 (char 155)": 2,
-        "Extra data: line 3 column 1 (char 158)": 1,
-        "Extra data: line 3 column 1 (char 191)": 1,
-        "Expecting value: line 1 column 1 (char 0": 1,
-        "Extra data: line 3 column 1 (char 193)": 1
+      "logged_domains": 644,
+      "missing_pages": 644,
+      "missing_explained_by_log": 644,
+      "logged_but_present_in_output": 0,
+      "error_categories": {
+        "invalid JSON output": 591,
+        "timeout": 36,
+        "other": 17
       },
-      "overlap_with_missing_qwen_single": 0,
-      "overlap_with_missing_qwen_iter": 0,
-      "overlap_with_missing_llama_single": 6,
-      "overlap_with_missing_llama_iter": 1
+      "failing_call": {
+        "single call": 644
+      }
+    },
+    "llama_iter": {
+      "path": "data/interim/extraction_skipped_iterative_llama_full.log",
+      "exists": true,
+      "logged_domains": 6613,
+      "missing_pages": 6613,
+      "missing_explained_by_log": 6613,
+      "logged_but_present_in_output": 0,
+      "error_categories": {
+        "timeout": 2108,
+        "invalid JSON output": 4487,
+        "other": 18
+      },
+      "failing_call": {
+        "entity_extraction": 6613
+      }
     }
   }
 }

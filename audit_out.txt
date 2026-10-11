@@ -1,0 +1,40 @@
+[INFO] 280,238 fetched pages with text
+
+== qwen_single: 280,194 records | missing 44 | unparseable 0 | duplicates 0 | with problems 9,524
+   status {'extracted': 280194}
+   missing fields {} | non-string {} | empty {}
+   manufactures not yes/no/unknown: 0 {}
+   suspicious long/sentence values: {'product': 9441, 'is_component_of': 31, 'distributed_by': 36, 'company': 16, 'made_in': 12}
+
+== qwen_iter: 280,126 records | missing 112 | unparseable 0 | duplicates 0 | with problems 11,032
+   status {'extracted': 280126}
+   missing fields {} | non-string {} | empty {'product': 1}
+   manufactures not yes/no/unknown: 0 {}
+   suspicious long/sentence values: {'product': 10096, 'is_component_of': 695, 'made_in': 127, 'distributed_by': 157, 'company': 16}
+
+== llama_single: 279,594 records | missing 644 | unparseable 0 | duplicates 0 | with problems 3,206
+   status {'extracted': 279594}
+   missing fields {} | non-string {} | empty {'product': 1}
+   manufactures not yes/no/unknown: 0 {}
+   suspicious long/sentence values: {'product': 2851, 'company': 31, 'distributed_by': 278, 'is_component_of': 48}
+
+== llama_iter: 273,625 records | missing 6,613 | unparseable 0 | duplicates 0 | with problems 4,725
+   status {'extracted': 273625}
+   missing fields {} | non-string {} | empty {'product': 1}
+   manufactures not yes/no/unknown: 0 {}
+   suspicious long/sentence values: {'product': 3791, 'distributed_by': 497, 'company': 31, 'made_in': 354, 'is_component_of': 78}
+
+== FAILURE LOGS (full runs): how many missing pages does each log explain?
+  qwen_single   log entries     44 | missing pages     44 | explained     44 (100.0%) | logged but present 0
+                categories {'invalid JSON output': 41, 'timeout': 3}
+  qwen_iter     log entries    112 | missing pages    112 | explained    112 (100.0%) | logged but present 0
+                categories {'invalid JSON output': 109, 'other': 3}
+                failing call {'entity_extraction': 112}
+  llama_single  log entries    644 | missing pages    644 | explained    644 (100.0%) | logged but present 0
+                categories {'invalid JSON output': 591, 'timeout': 36, 'other': 17}
+  llama_iter    log entries  6,613 | missing pages  6,613 | explained  6,613 (100.0%) | logged but present 0
+                categories {'timeout': 2108, 'invalid JSON output': 4487, 'other': 18}
+                failing call {'entity_extraction': 6613}
+
+[DONE] data/interim/eval/audit_summary.json, audit_missing_*.txt, audit_invalid_*.csv
+NOTE: 'logged but present' = a call failed but the page still has a record (e.g. a failed relation call in the iterative strategy, stored as 'unknown').
