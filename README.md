@@ -184,7 +184,7 @@ Raw and intermediate data (the WDC corpus, page texts, extraction outputs, graph
 ```
 data/
 ├── annotation/
-│   ├── gold_annotation.xlsx                     # gold standard: 320 stratified pages, all six fields
+│   ├── gold_annotation.xlsx                    
 │   ├── annotation_strat_BLIND.xlsx              # blind annotation sheet with the page text of the 320 pages
 │   ├── annotation_strat_design.json             # stratum sizes (for corpus-weighted estimates)
 │   ├── annotation_strat_reference_HIDDEN.jsonl  # strata, inclusion probabilities and model predictions per gold page
