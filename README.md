@@ -91,8 +91,8 @@ git clone https://github.com/faeze1991/sc_kg_thesis-.git
 cd sc_kg_thesis-
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env              # fill in the values you need
-set -a; source .env; set +a       # export them into the shell
+cp .env.example .env              
+set -a; source .env; set +a       
 ```
 
 `.env` is gitignored and must never be committed.
