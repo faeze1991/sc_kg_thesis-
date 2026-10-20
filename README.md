@@ -227,7 +227,6 @@ data/
 └── README.md
 ```
 
-`src/kg/build_annotation_sample.py` and `build_annotation_topup.py` are kept for provenance: they drew the pages of the earlier annotation rounds that became the silver training data.
 
 ---
 
