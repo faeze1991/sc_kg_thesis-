@@ -30,3 +30,4 @@ data/interim/kg/*.graphml
 # annotation helpers that are regenerable or too large
 data/annotation/annotation_strat_fulltext/
 data/interim/eval/figures/
+data/interim/eval/figures/
