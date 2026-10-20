@@ -14,6 +14,10 @@ wrong-section selection without giving up its noise-reduction benefit
 for the (majority) of pages where it works correctly.
 
 Resumable: skips domains already present in the output file.
+
+Usage (from the project root, AWS credentials configured):
+    python -m src.fetch.extract_text_hybrid \
+        [data/interim/athena_lookup_results_all_dedup.csv] [data/interim/fetched_pages.jsonl] [skip.log]
 """
 
 import json

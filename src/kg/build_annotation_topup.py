@@ -1,6 +1,12 @@
 """
 build_annotation_topup.py
 
+HISTORICAL (earlier annotation round): this script drew the pages of the first
+annotation round. Those pages were later labelled with LLM assistance and are
+used only as "silver" training data for the classical baseline
+(data/annotation/silver/). They are NOT part of the gold-standard evaluation,
+which uses the 320 stratified pages (make_stratified_annotation_sheet.py).
+
 Builds a TARGETED top-up annotation sample specifically for made_in and
 is_component_of -- the two fields that were too sparse in the original
 366-row sample (~11 and ~2 true positives respectively) to compute
@@ -24,7 +30,7 @@ Excludes any domain already in the original 366-row sample, to avoid
 duplicate annotation work.
 
 Usage:
-    python3 src/kg/build_annotation_topup.py
+    python -m src.kg.build_annotation_topup
 """
 
 import json

@@ -1,6 +1,12 @@
 """
 build_annotation_sample.py
 
+HISTORICAL (earlier annotation round): this script drew the pages of the first
+annotation round. Those pages were later labelled with LLM assistance and are
+used only as "silver" training data for the classical baseline
+(data/annotation/silver/). They are NOT part of the gold-standard evaluation,
+which uses the 320 stratified pages (make_stratified_annotation_sheet.py).
+
 Builds TWO outputs for manual annotation / evaluation:
 
 1. annotation_sample_BLIND.csv
@@ -23,7 +29,7 @@ Sampling strategy:
       "interesting" (signal) records.
 
 Usage:
-    python3 src/kg/build_annotation_sample.py
+    python -m src.kg.build_annotation_sample
 """
 
 import json

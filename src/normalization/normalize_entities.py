@@ -13,8 +13,14 @@ The original model values are kept: product_raw, is_component_of_raw and
 made_in_raw hold the strings exactly as extracted (scoring always uses the raw
 extraction files; these fields make every graph value traceable).
 
-Usage (from src/normalization/, as before):
-    python3 normalize_entities.py <input.jsonl> <output.jsonl> [sample_size]
+Usage (from the project root):
+    python -m src.normalization.normalize_entities <input.jsonl> <output.jsonl> [sample_size]
+
+Output files used for the four graphs:
+    extraction_results_full_qwen.jsonl                -> extraction_results_normalized_FINAL.jsonl
+    extraction_results_iterative_full.jsonl           -> extraction_results_iterative_normalized.jsonl
+    extraction_results_llama70b_full.jsonl            -> extraction_results_llama70b_normalized.jsonl
+    extraction_results_iterative_llama_full.jsonl     -> extraction_results_iterative_llama_normalized.jsonl
 
 Run on a SAMPLE first before the full corpus - see main() sample_size arg.
 """
@@ -25,7 +31,10 @@ import sys
 from collections import defaultdict
 from rapidfuzz import fuzz
 
-from location_aliases import normalize_location
+try:  # module mode from the project root (recommended)
+    from src.normalization.location_aliases import normalize_location
+except ImportError:  # direct run from src/normalization/
+    from location_aliases import normalize_location
 
 LEGAL_SUFFIXES = [
     r"\bltd\.?\b", r"\bllc\.?\b", r"\binc\.?\b", r"\bcorp\.?\b",

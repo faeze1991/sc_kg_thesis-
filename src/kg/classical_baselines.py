@@ -4,7 +4,7 @@ for supply chain relation extraction, following the classical-baseline paradigm 
 Kim et al. (2025) (SVM over bag-of-words features).
 
 What changed compared with the earlier version
-  * Test set = the 320 stratified gold pages (data/interim/gold_annotation.xlsx).
+  * Test set = the 320 stratified gold pages (data/annotation/gold_annotation.xlsx).
   * The script no longer computes its own metric (macro-F1). It writes predictions
     in the same format as the LLM outputs, and score_unified.py scores them with
     exactly the same metric as the LLMs:
@@ -43,9 +43,10 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.svm import LinearSVC
 
 D = "data/interim"
-TRAIN_FILES = [f"{D}/annotation_sample_WITH_CLAUDE.csv", f"{D}/annotation_topup_WITH_CLAUDE.csv"]
-GOLD = f"{D}/gold_annotation.xlsx"
-GOLD_TEXT = f"{D}/annotation_strat_BLIND.xlsx"  # page_text of the 320 gold pages
+A = "data/annotation"
+TRAIN_FILES = [f"{A}/silver/annotation_sample_WITH_CLAUDE.csv", f"{A}/silver/annotation_topup_WITH_CLAUDE.csv"]
+GOLD = f"{A}/gold_annotation.xlsx"
+GOLD_TEXT = f"{A}/annotation_strat_BLIND.xlsx"  # page_text of the 320 gold pages
 OUT_DIR = f"{D}/eval"
 TEXT_LIMIT = 3000  # same input length as the LLMs
 

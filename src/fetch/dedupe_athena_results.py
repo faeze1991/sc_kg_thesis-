@@ -3,6 +3,10 @@ Deduplicate Athena lookup results: some URLs matched multiple index entries
 (e.g. both '/page' and '/page/' existing as separate crawled captures, both
 matching after trailing-slash normalization). Keep exactly one row per
 unique input URL.
+
+Usage (from the project root):
+    python -m src.fetch.dedupe_athena_results \
+        data/interim/athena_lookup_results_all.csv data/interim/athena_lookup_results_all_dedup.csv
 """
 import csv
 import sys

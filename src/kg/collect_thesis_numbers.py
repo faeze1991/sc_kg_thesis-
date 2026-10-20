@@ -4,9 +4,7 @@ collect_thesis_numbers.py -- gathers every number and chart needed for Sections
 Read-only: it does not change any data. No LLM calls.
 
 Run from the project root (venv active):
-    python3 -m src.kg.collect_thesis_numbers > thesis_numbers.txt 2>&1
-Then push the outputs:
-    git add thesis_numbers.txt data/interim/eval/figures && git commit -m "thesis numbers + figures" && git push
+    python -m src.kg.collect_thesis_numbers > data/interim/eval/thesis_numbers.txt 2>&1
 
 Each section is independent: if one fails, it prints the error and continues.
 """

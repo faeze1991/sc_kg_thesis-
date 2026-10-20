@@ -9,6 +9,9 @@ Input:  data/raw/pdc2020c.json          (21.9M product records, JSON-lines)
 Output: data/interim/domain_urls.jsonl  (one row per unique domain: {"domain": ..., "url": ...})
         data/interim/stage_a_skipped.log (skipped/malformed line log)
 
+Usage (from the project root):
+    python -m src.fetch.build_domain_list
+
 Domain normalization: "www." prefix stripped so www.X.com and X.com are treated
 as the same company/domain. Port and userinfo (if present) are also stripped.
 """

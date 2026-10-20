@@ -5,6 +5,12 @@ threshold (meaning they'd have gotten the naive fallback under corrected
 logic, but didn't). Re-fetch just those and apply naive extraction.
 
 Everything else in fetched_pages.jsonl is left completely untouched.
+
+Needed only because part of the corpus was first processed with a 500-character
+threshold; on a fresh run of extract_text_hybrid.py (800 characters) it repairs
+nothing. Afterwards the repaired file replaces the original:
+    python -m src.fetch.repair_marginal_extractions
+    mv data/interim/fetched_pages_repaired.jsonl data/interim/fetched_pages.jsonl
 """
 import json
 import gzip
