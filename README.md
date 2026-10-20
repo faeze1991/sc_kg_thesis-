@@ -110,15 +110,13 @@ Always run from the project root in module mode (`python -m src....`). The modul
 
 ### Stages A–B: source selection and retrieval
 
-```bash
-python -m src.fetch.build_domain_list
+python -m src.fetch.build_domain_list                     # Stage A: one URL per domain from the WDC corpus
 python -m src.fetch.athena_lookup data/interim/domain_urls.jsonl data/interim/athena_lookup_results_all.csv
 python -m src.fetch.dedupe_athena_results data/interim/athena_lookup_results_all.csv data/interim/athena_lookup_results_all_dedup.csv
-python -m src.fetch.extract_text_hybrid
-python -m src.fetch.repair_marginal_extractions            # see the script header; a no-op on a fresh run
+python -m src.fetch.extract_text_hybrid                   # fetch pages from S3 and extract text
+python -m src.fetch.repair_marginal_extractions           # re-extracts short pages (needed only because an early run used a lower threshold)
 mv data/interim/fetched_pages_repaired.jsonl data/interim/fetched_pages.jsonl
-python -m src.kg.join_wdc_fields                          # WDC cluster id + brand per page
-```
+python -m src.kg.join_wdc_fields                          # adds WDC product cluster and brand to each page
 
 ### Stage C: extraction (four configurations)
 
