@@ -1,95 +1,245 @@
-# Automated Construction of Supply Chain Knowledge Graphs from Web Crawl Data Using LLMs
+# Automated Construction of Supply Chain Knowledge Graphs from Web Crawl Data Using Large Language Models
 
-Master's thesis, Leuphana University Lüneburg. Supervisor: Dr. Debayan Banerjee.
+Code and evaluation data for the Master's thesis of **Faezeh Moradi** (Management and Data Science, Leuphana University Lüneburg, October 2026).
+First examiner: Dr. Debayan Banerjee · Second examiner: Anna Ehrenberg
 
-This repository contains the code for a pipeline that turns web-scale e-commerce pages into a queryable supply chain knowledge graph. It selects one page per domain from the WDC PDC2020-C corpus, retrieves the page text from Common Crawl, extracts entities and relations with an LLM, normalizes and merges them into a graph, and evaluates the result against a human-annotated gold standard and a set of competency questions.
+The pipeline selects one product page per website from the Web Data Commons Product Data Corpus (PDC2020-C), retrieves the archived pages from Common Crawl, extracts company–product information with zero-shot, schema-guided LLM prompting, and builds one knowledge graph per extraction configuration. The graphs are evaluated against a 320-page gold standard, a classical baseline, SPARQL competency questions and sampled graph audits.
 
-The extraction design is a 2×2 factorial experiment: two models (Qwen3-30B-A3B, Llama 3.3 70B) × two prompting strategies (single-pass, iterative). The prompting follows the schema-guided approach of Brinkmann et al. ([arXiv:2306.14921](https://arxiv.org/abs/2306.14921)). The iterative variant adapts Carta et al. ([arXiv:2307.01128](https://arxiv.org/abs/2307.01128)) by iterating per relation type instead of per entity.
+The extraction is a 2 × 2 design: two self-hosted models (Qwen3-30B-A3B-Instruct-2507, Llama 3.3 70B Instruct) × two prompting strategies (single-pass, iterative per relation type, adapted from Carta et al. 2023).
+
+---
 
 ## Pipeline
 
-| Stage | Purpose | Module | Input | Output |
-| ----- | ------- | ------ | ----- | ------ |
-| A. Domain deduplication | One record per domain (first occurrence), 280,239 domains from 21.9M records | `TODO: path` | WDC corpus | `TODO` |
-| B. Page retrieval | Common Crawl index lookup (Athena) + WARC byte-range fetch (S3), text via trafilatura | `TODO: path` | domain list | `data/interim/fetched_pages.jsonl` |
-| C. LLM extraction | Entities (company, product, location) and relations, single-pass and iterative | `src/extraction/run_extraction.py` | `fetched_pages.jsonl` | `extraction_results_*.jsonl` |
-| Normalization | Entity and location alias normalization | `src/normalization/normalize_entities.py`, `src/normalization/location_aliases.py` | extraction results | `extraction_results_normalized_*.jsonl` |
-| D. Graph construction | Build the KG, merge products by identity rules | `src/kg/build_graph.py` | normalized results | `kg_graph_*.gpickle` |
-| Competency questions | CQs run against the graph | `src/kg/run_cqs_llama.py` | graph | CQ results |
+| Stage | What it does | Module(s) | Main output |
+|---|---|---|---|
+| **A** Source selection | 21.9 M WDC product records → one URL per domain (280,239 domains) | `src/fetch/build_domain_list.py` | `domain_urls.jsonl` |
+| **B** Retrieval | Common Crawl index lookup with AWS Athena, WARC byte-range reads from S3, text via trafilatura with an 800-character BeautifulSoup fallback (280,238 pages) | `src/fetch/athena_lookup.py` → `dedupe_athena_results.py` → `extract_text_hybrid.py` → `repair_marginal_extractions.py` | `fetched_pages.jsonl` |
+| | Re-attach WDC cluster id and declared brand (identity evidence for Stage D) | `src/kg/join_wdc_fields.py` | `wdc_fields.jsonl` |
+| **C** LLM extraction | Single-pass (1 call/page) and iterative (up to 5 calls/page) | `src/extraction/run_extraction.py`, `src/extraction/run_iterative_extraction.py` | `extraction_results_*.jsonl` |
+| | Schema validation and failure audit of the four runs | `src/kg/audit_outputs.py` | `eval/audit_summary.json` |
+| **D** Normalization | Company/brand cleanup and fuzzy merging (threshold 97), location aliases | `src/normalization/normalize_entities.py`, `location_aliases.py` | `extraction_results_*_normalized.jsonl` |
+| | Knowledge graphs with evidence-based product identity, competency questions | `src/kg/build_kg.py` | `kg/kg_<config>_<full\|common>.gpickle`, `kg/summary.csv` |
+| | RDF export and SPARQL competency questions CQ1–CQ8 | `src/kg/export_rdf.py` | `kg/*.nt`, `kg/sparql/*.rq`, `kg/sparql_*.txt` |
+| **Eval** | Stratified gold sample, scoring, baseline, pre-filter analysis, graph audits | `src/kg/make_stratified_annotation_sheet.py`, `score_unified.py`, `classical_baselines.py`, `feature_analysis.py`, `make_audit_sheets.py`, `recheck_cq8.py` | `eval/scores_long.csv`, `kg/audit_*_checked.xlsx` |
+| | All numbers and figures used in Chapters 3–5 | `src/kg/collect_thesis_numbers.py` | `eval/thesis_numbers.txt`, `eval/figures/` |
+
+All paths in the Output column are relative to `data/interim/`.
+
+### Where each part of the thesis lives in the code
+
+| Thesis section | Code |
+|---|---|
+| 3.2 Data source and retrieval (Stages A–B) | `src/fetch/` |
+| 3.3 Extraction schema | `config/schema.yaml`, prompts in `src/extraction/` |
+| 3.5 Single-pass strategy, Appendix A.1 | `src/extraction/run_extraction.py` (`PROMPT_TEMPLATE`) |
+| 3.6 Iterative strategy, Appendix A.1 | `src/extraction/run_iterative_extraction.py` (`ENTITY_PROMPT_TEMPLATE`, `RELATION_PROMPTS`) |
+| 3.8 Entity normalization | `src/normalization/` |
+| 3.9 Knowledge graph construction (identity routes, component parents, locations) | `src/kg/build_kg.py`, `src/kg/join_wdc_fields.py` |
+| 3.9.5 RDF export, competency questions, Appendix A.2 | `src/kg/export_rdf.py`, `data/interim/kg/sparql/` |
+| 4.1 Gold-standard sample | `src/kg/make_stratified_annotation_sheet.py`, `data/annotation/` |
+| 4.2 Metrics, bootstrap intervals, corpus weighting, baseline | `src/kg/score_unified.py`, `src/kg/classical_baselines.py` |
+| 4.3 / 5.5 Graph audit | `src/kg/make_audit_sheets.py`, `src/kg/recheck_cq8.py` |
+| 5.1 Runs, failures, pre-filter analysis | `src/kg/audit_outputs.py`, `src/kg/feature_analysis.py` |
+
+---
 
 ## Schema
 
-Entity types: `company`, `product`, `location`.
+| Relation | Domain → Range | Meaning |
+|---|---|---|
+| `manufactures` | company → product | The website operator makes the product (edge only for "yes") |
+| `has_brand` | product → company | A different company or brand that makes or brands the product |
+| `made_in` | product → location | Stated manufacturing location (not an address or shipping origin) |
+| `is_component_of` | product → product | One specific, named parent product |
+| `offers` | company → product | Derived from page context, not extracted by the LLM |
 
-Relations: `manufactures`, `is_component_of`, `distributed_by`, `made_in`. Additionally, `offers` (operator → product) is derived from page context and kept separate from the four LLM-extracted relations.
+> **Naming note.** `has_brand` is stored as **`distributed_by`** in the prompts and in all extraction files, because that was its name when the runs were made. It captures the product's brand or named maker, not a distributor, so the thesis, the graphs and the RDF export call it `has_brand` / `sc:hasBrand`.
 
-`TODO: update the relation names here if `distributed_by` is renamed.`
+---
+
+## Main results
+
+Relaxed F1 on the 320-page gold sample (thesis Table 5.2):
+
+| Field | Qwen single | Qwen iterative | Llama single | Llama iterative |
+|---|---|---|---|---|
+| company | 0.93 | 0.92 | 0.90 | 0.93 |
+| product | 0.75 | 0.75 | 0.78 | 0.78 |
+| manufactures | 0.48 | 0.40 | 0.44 | 0.62 |
+| has_brand | 0.81 | 0.77 | 0.80 | 0.81 |
+| made_in | 0.71 | 0.67 | 0.77 | 0.70 |
+| is_component_of | 0.51 | 0.41 | 0.64 | 0.39 |
+
+All LLM configurations outperform the TF-IDF + SVM / logistic-regression baselines on every relation (binarized F1). Knowledge graphs (all pages, Table 5.4): 553k–622k nodes and 402k–454k edges per configuration. The audited precision of company pairs connected through a shared product (CQ8) is 0.49 after the identity rules were tightened. Full figures are in `data/interim/eval/thesis_numbers.txt`.
+
+---
 
 ## Requirements
 
-- Python 3.10+
-- A GPU server for local inference (developed on 5× NVIDIA L40S, one GPU used at a time)
-- vLLM for local serving of Qwen3-30B-A3B-Instruct-2507-FP8, or an OpenAI-compatible API (GWDG AcademicCloud `chat-ai.academiccloud.de`) for Llama 3.3 70B
-- AWS credentials with Athena and S3 read access (stage B)
-- `TODO: list in requirements.txt / pyproject.toml`
+- Python 3.12 (developed with 3.12.3) on Linux
+- **Stage B:** an AWS account with Athena and S3 access, and the Common Crawl index table `ccindex` set up in Athena (see Common Crawl's documentation of its columnar URL index)
+- **Stage C:** a GPU with vLLM for the self-hosted models (the thesis used one NVIDIA L40S, 46 GB, per run), or any OpenAI-compatible API
+- **Stage A input:** the WDC PDC2020-C corpus as JSON lines at `data/raw/pdc2020c.json` (about 15 GB), from [Web Data Commons](https://webdatacommons.org)
+
+Stages D and Eval need neither a GPU nor AWS.
 
 ## Installation
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
+git clone https://github.com/faeze1991/sc_kg_thesis-.git
+cd sc_kg_thesis-
+python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env     # then fill in your keys
+cp .env.example .env              # fill in the values you need
+set -a; source .env; set +a       # export them into the shell
 ```
 
-Keys are read from `.env`, which is gitignored. Never commit it.
+`.env` is gitignored and must never be committed.
 
-## Running
+| Variable | Used by | Purpose |
+|---|---|---|
+| `EXTRACTION_ENDPOINT` | Stage C | OpenAI-compatible chat-completions URL (vLLM or GWDG) |
+| `GWDG_API_KEY` | Stage C | Only for the GWDG AcademicCloud API |
+| `EXTRACTION_WORKERS` | Stage C | Concurrent requests (20 for vLLM, 3 for the GWDG API) |
+| `AWS_*`, `ATHENA_BUCKET` | Stage B | Athena index lookup and S3 reads |
 
-Run modules from the project root with `-m`, not as plain scripts, because the `src` packages use absolute imports (running `python src/kg/build_graph.py` breaks the location alias import):
+---
+
+## Running the pipeline
+
+Always run from the project root in module mode (`python -m src....`). The modules use absolute imports such as `from src.normalization.location_aliases import ...`, which fail when a file is run directly as a script.
+
+### Stages A–B: source selection and retrieval
 
 ```bash
-python -m src.extraction.run_extraction     # stage C
-python -m src.normalization.normalize_entities
-python -m src.kg.build_graph                # stage D
-python -m src.kg.run_cqs_llama              # competency questions
+python -m src.fetch.build_domain_list
+python -m src.fetch.athena_lookup data/interim/domain_urls.jsonl data/interim/athena_lookup_results_all.csv
+python -m src.fetch.dedupe_athena_results data/interim/athena_lookup_results_all.csv data/interim/athena_lookup_results_all_dedup.csv
+python -m src.fetch.extract_text_hybrid
+python -m src.fetch.repair_marginal_extractions            # see the script header; a no-op on a fresh run
+mv data/interim/fetched_pages_repaired.jsonl data/interim/fetched_pages.jsonl
+python -m src.kg.join_wdc_fields                          # WDC cluster id + brand per page
 ```
 
-`TODO: add the arguments for choosing model and strategy (single-pass / iterative).`
+### Stage C: extraction (four configurations)
 
-## Evaluation
+Serve a model with vLLM, for example `vllm serve Qwen/Qwen3-30B-A3B-Instruct-2507-FP8 --port 8000`, then:
 
-- **Extraction quality:** per-field precision, recall and F1 against a human-annotated gold standard of 320 stratified pages (`gold_annotation.xlsx`).
-- **Graph quality:** competency questions executed against the graph, plus an audit of component edges, merged identifiers and name variants.
-- **Baseline:** classical supplier-buyer extraction after Wichmann et al.
+```bash
+P=data/interim/fetched_pages.jsonl; I=data/interim
+QWEN=Qwen/Qwen3-30B-A3B-Instruct-2507-FP8
+LLAMA=lambdalabs/Llama-3.3-70B-Instruct-AWQ-4bit
+
+# single-pass
+EXTRACTION_ENDPOINT=http://localhost:8000/v1/chat/completions \
+  python -m src.extraction.run_extraction $QWEN  $P $I/extraction_results_full_qwen.jsonl     $I/extraction_skipped_full_qwen.log
+EXTRACTION_ENDPOINT=http://localhost:8003/v1/chat/completions \
+  python -m src.extraction.run_extraction $LLAMA $P $I/extraction_results_llama70b_full.jsonl $I/extraction_skipped_llama70b_full.log
+
+# iterative
+EXTRACTION_ENDPOINT=http://localhost:8000/v1/chat/completions \
+  python -m src.extraction.run_iterative_extraction $P $I/extraction_results_iterative_full.jsonl       $I/extraction_skipped_iterative_full.log $QWEN
+EXTRACTION_ENDPOINT=http://localhost:8003/v1/chat/completions \
+  python -m src.extraction.run_iterative_extraction $P $I/extraction_results_iterative_llama_full.jsonl $I/extraction_skipped_iterative_llama_full.log $LLAMA
+
+python -m src.kg.audit_outputs                             # coverage and failure audit (Table 5.1)
+```
+
+All runs use temperature 0 and the first 3,000 characters of each page. They can be resumed: pages already in the output file are skipped.
+
+### Stage D: normalization and knowledge graphs
+
+```bash
+I=data/interim
+python -m src.normalization.normalize_entities $I/extraction_results_full_qwen.jsonl            $I/extraction_results_normalized_FINAL.jsonl
+python -m src.normalization.normalize_entities $I/extraction_results_iterative_full.jsonl       $I/extraction_results_iterative_normalized.jsonl
+python -m src.normalization.normalize_entities $I/extraction_results_llama70b_full.jsonl        $I/extraction_results_llama70b_normalized.jsonl
+python -m src.normalization.normalize_entities $I/extraction_results_iterative_llama_full.jsonl $I/extraction_results_iterative_llama_normalized.jsonl
+
+python -m src.kg.build_kg          # 4 configurations x {full, common page set}
+python -m src.kg.export_rdf        # N-Triples + SPARQL CQ1-CQ8, checked against the Python CQ counts
+```
+
+### Evaluation
+
+```bash
+python -m src.kg.score_unified                             # LLM configurations vs. the gold standard
+python -m src.kg.classical_baselines                       # TF-IDF + SVM / LogReg, trained on silver labels
+python -m src.kg.score_unified \
+    --extra classical_svm=data/interim/eval/preds_classical_svm.jsonl \
+    --extra classical_lr=data/interim/eval/preds_classical_lr.jsonl
+python -m src.kg.feature_analysis                          # RQ1: what a pre-filter would have kept or lost
+python -m src.kg.make_audit_sheets                         # graph audit sheets (filled in by hand)
+python -m src.kg.recheck_cq8 data/interim/kg/audit_sheets_checked.xlsx   # after tightening the identity rules
+python -m src.kg.collect_thesis_numbers > data/interim/eval/thesis_numbers.txt 2>&1
+```
+
+The gold sample itself was drawn once with `python -m src.kg.make_stratified_annotation_sheet` (40 + 40 pages per relation, seed 2026). Re-running it is not needed to reproduce the scores.
+
+---
+
+## Data in this repository
+
+Raw and intermediate data (the WDC corpus, page texts, extraction outputs, graph files) are not included because of their size. They are regenerated by the stages above. The repository contains the annotation data and the small result files behind the thesis:
+
+```
+data/
+├── annotation/
+│   ├── gold_annotation.xlsx                  # gold standard: 320 stratified pages, all six fields
+│   ├── annotation_strat_BLIND.xlsx           # the blind annotation sheet with the page text of the 320 pages
+│   ├── annotation_strat_design.json          # stratum sizes (for corpus-weighted estimates)
+│   ├── annotation_strat_reference_HIDDEN.jsonl  # strata, inclusion probabilities and model predictions per gold page
+│   └── silver/                               # 1,166 pages of earlier annotation rounds, labelled with LLM
+│       ├── annotation_sample_WITH_CLAUDE.csv #   assistance (claude_* columns). Training data for the classical
+│       └── annotation_topup_WITH_CLAUDE.csv  #   baseline only, never used for evaluation. Semicolon-separated.
+└── interim/
+    ├── eval/
+    │   ├── scores_long.csv          # every system x gold set x policy x matching mode x field (P/R/F1, 95% CI)
+    │   ├── page_details.csv         # per page and field: gold, prediction, outcome (error analysis)
+    │   ├── coverage.csv             # gold / scored / missing pages per system
+    │   ├── audit_summary.json       # schema and failure audit of the four extraction runs
+    │   ├── figures/                 # thesis figures
+    │   └── thesis_numbers.txt       # every number reported in Chapters 3-5
+    └── kg/
+        ├── summary.csv              # graph statistics per configuration and page set (final rules)
+        ├── summary_v1.csv, summary_v2.csv   # statistics before each tightening of the identity rules (Figure 5.4)
+        ├── entity_matches_*.csv     # log of every accepted merge, rejected cluster and merge candidate
+        ├── sparql/cq*.rq            # the competency-question queries (Appendix A.2)
+        ├── audit_sheets_checked.xlsx    # first graph audit with verdicts
+        ├── audit_cq8_v2_checked.xlsx    # fresh CQ8 audit on the revised graphs
+        └── cq8_recheck.csv          # which audited CQ8 pairs survive the revised identity rules
+```
+
+**Gold standard.** Pages were annotated blind (the sheet shows the page text but no model output), following the explicit-evidence guidelines in thesis Section 4.1, and all labels were checked by the author. For nine pages, the evidence for at least one label appears only after the first 3,000 characters; `score_unified.py` marks them (`BEYOND_3000`) to measure the effect of truncation.
 
 ## Repository structure
 
 ```
 .
+├── config/schema.yaml          # extraction schema (documentation)
+├── data/                       # see above
 ├── src/
-│   ├── extraction/        # LLM extraction (single-pass and iterative)
-│   ├── normalization/     # entity and location normalization
-│   └── kg/                # graph construction and competency questions
-├── gold_annotation.xlsx   # final gold standard (320 pages)
+│   ├── fetch/                  # Stages A-B: domain selection, Athena lookup, WARC retrieval, text extraction
+│   ├── extraction/             # Stage C: single-pass and iterative LLM extraction
+│   ├── normalization/          # Stage D: company/brand normalization, location aliases
+│   └── kg/                     # graph construction, RDF/SPARQL, evaluation, baseline, audits
 ├── .env.example
 ├── requirements.txt
 └── README.md
 ```
 
-`TODO: adjust to the real tree after cleanup.`
+`src/kg/build_annotation_sample.py` and `build_annotation_topup.py` are kept for provenance: they drew the pages of the earlier annotation rounds that became the silver training data.
 
-## Data
-
-Raw and intermediate data (Common Crawl pages, extraction outputs, graph files) are **not** in this repository because of their size. They are produced by running the stages above. Only the final gold standard is included.
-
-## Reproducibility
-
-`TODO: add run manifest + prompt version hashes once implemented.`
+---
 
 ## References
 
-- Brinkmann et al., schema-guided LLM prompting, arXiv:2306.14921
-- Carta et al., iterative LLM-based KG construction, arXiv:2307.01128
-- Wichmann et al., supplier-buyer relation extraction (baseline)
-- WDC PDC2020-C corpus (Web Data Commons)
+Numbers refer to the thesis bibliography.
+
+- [1] S. Carta et al. (2023). *Iterative Zero-Shot LLM Prompting for Knowledge Graph Construction.* arXiv:2307.01128
+- [8] P. Wichmann et al. (2020). *Extracting supply chain maps from news articles using deep neural networks.* International Journal of Production Research 58(17)
+- [15] A. Brinkmann et al. (2023). *Product Information Extraction using ChatGPT.* arXiv:2306.14921
+- [16] J. Kim et al. (2025). *Extracting Supply Chain Information From News Articles Using Large Language Models: A Fully Automatic Approach.* IEEE Access 13
+- [18] R. Peeters, R. C. Der, C. Bizer (2023). *WDC Products: A Multi-Dimensional Entity Matching Benchmark.* arXiv:2301.09521
+- Common Crawl, snapshot CC-MAIN-2020-40, https://commoncrawl.org
