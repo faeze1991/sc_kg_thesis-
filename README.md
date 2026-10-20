@@ -184,21 +184,19 @@ Raw and intermediate data (the WDC corpus, page texts, extraction outputs, graph
 ```
 data/
 ├── annotation/
-│   ├── gold_annotation.xlsx                  
-│   ├── annotation_strat_BLIND.xlsx           # the blind annotation sheet with the page text of the 320 pages
-│   ├── annotation_strat_design.json          # stratum sizes (for corpus-weighted estimates)
+│   ├── gold_annotation.xlsx                     # gold standard: 320 stratified pages, all six fields
+│   ├── annotation_strat_BLIND.xlsx              # blind annotation sheet with the page text of the 320 pages
+│   ├── annotation_strat_design.json             # stratum sizes (for corpus-weighted estimates)
 │   ├── annotation_strat_reference_HIDDEN.jsonl  # strata, inclusion probabilities and model predictions per gold page
-│   └── silver/                               
-│       ├── annotation_sample_WITH_CLAUDE.csv #   assistance (claude_* columns). Training data for the classical
-│       └── annotation_topup_WITH_CLAUDE.csv  #   baseline only, never used for evaluation. Semicolon-separated.
+│   └── silver/                                  # 1,166 pages of earlier rounds, labelled with LLM assistance;
+│       ├── annotation_sample_WITH_CLAUDE.csv    #   training data for the classical baseline only,
+│       └── annotation_topup_WITH_CLAUDE.csv     #   never used for evaluation (semicolon-separated)
 └── interim/
     ├── eval/
     │   ├── scores_long.csv          # every system x gold set x policy x matching mode x field (P/R/F1, 95% CI)
     │   ├── page_details.csv         # per page and field: gold, prediction, outcome (error analysis)
     │   ├── coverage.csv             # gold / scored / missing pages per system
-    │   ├── audit_summary.json       # schema and failure audit of the four extraction runs
-    │   ├── figures/                 # thesis figures
-    │   └── thesis_numbers.txt       # every number reported in Chapters 3-5
+    │   └── audit_summary.json       # schema and failure audit of the four extraction runs
     └── kg/
         ├── summary.csv              # graph statistics per configuration and page set (final rules)
         ├── summary_v1.csv, summary_v2.csv   # statistics before each tightening of the identity rules (Figure 5.4)
