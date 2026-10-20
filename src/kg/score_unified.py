@@ -2,7 +2,7 @@
 score_unified.py -- ONE scorer for every configuration (LLM and classical).
 
 Run from the project root:
-    python3 -m src.kg.score_unified        # reads data/interim/gold_annotation.xlsx
+    python3 -m src.kg.score_unified        # reads data/annotation/gold_annotation.xlsx
     python3 -m src.kg.score_unified --extra classical_svm=data/interim/preds_svm.jsonl
 
 What it fixes compared with compare_all_four.py
@@ -27,7 +27,7 @@ Missing-prediction policies (both reported):
   scored_only -- pages without a prediction are left out
 
 Gold sets:
-  All gold labels come from ONE file, data/interim/gold_annotation.xlsx: the 320
+  All gold labels come from ONE file, data/annotation/gold_annotation.xlsx: the 320
   stratified pages (strat_*), all six fields.
   strat   -- the 320 pages, reported unweighted and weighted to
              the corpus (1/inclusion probability, per field using the pages drawn for it)
@@ -56,8 +56,8 @@ CONFIGS = {
     "llama_single": f"{D}/extraction_results_llama70b_full.jsonl",
     "llama_iter": f"{D}/extraction_results_iterative_llama_full.jsonl",
 }
-GOLD_FILE = f"{D}/gold_annotation.xlsx"
-STRAT_REF = f"{D}/annotation_strat_reference_HIDDEN.jsonl"
+GOLD_FILE = "data/annotation/gold_annotation.xlsx"
+STRAT_REF = "data/annotation/annotation_strat_reference_HIDDEN.jsonl"
 OUT_DIR = f"{D}/eval"
 
 REL_FIELDS = ["manufactures", "has_brand", "made_in", "is_component_of"]

@@ -1,6 +1,6 @@
 """
 build_kg.py -- supply chain knowledge graphs with evidence-based product identity.
-Replaces build_graph.py + run_cqs.py. No LLM calls.
+No LLM calls.
 
 Run from the project root:
     python3 -m src.kg.build_kg                 # all 4 configurations x {full, common}

@@ -5,8 +5,12 @@ operation and is NOT subject to index.commoncrawl.org's rate limiting at
 all, since it queries S3 data via AWS's own infrastructure (Athena/Glue),
 completely separate from the CDX API server.
 
-Usage:
-    python3 athena_lookup.py <input_jsonl> <output_csv>
+Usage (from the project root, AWS credentials configured):
+    ATHENA_BUCKET=<your-bucket> python -m src.fetch.athena_lookup \
+        data/interim/domain_urls.jsonl data/interim/athena_lookup_results_all.csv
+
+Prerequisite: the Common Crawl index table `ccindex` must exist in the Athena
+database (see Common Crawl's documentation of its columnar URL index).
 
 <input_jsonl> should have {"domain": ..., "url": ...} per line (same
 format as domain_urls.jsonl / domain_urls_remaining.jsonl).
@@ -16,6 +20,7 @@ warc_record_length,fetch_time  - one row per URL FOUND in the index
 (URLs not found simply won't appear in the output).
 """
 
+import os
 import boto3
 import json
 import csv
@@ -24,7 +29,7 @@ import sys
 from pathlib import Path
 
 AWS_REGION = "us-east-1"
-BUCKET = "faezeh-thesis-athena-v1"
+BUCKET = os.environ.get("ATHENA_BUCKET", "faezeh-thesis-athena-v1")  # S3 bucket for Athena input/results
 ATHENA_OUTPUT = f"s3://{BUCKET}/results/"
 INPUT_S3_PREFIX = "athena-input/"
 INPUT_S3_KEY = f"{INPUT_S3_PREFIX}domain_urls.csv"

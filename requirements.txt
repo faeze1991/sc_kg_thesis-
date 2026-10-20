@@ -1,0 +1,24 @@
+# Python 3.12 (developed with 3.12.3)
+# Exact versions used on the server: see the pinned list produced by `pip freeze`
+# (the minimum versions below are the ones the code needs).
+
+# Stage A-B: retrieval and text extraction
+boto3
+requests
+trafilatura
+beautifulsoup4
+
+# Stage C: extraction (talks to an OpenAI-compatible endpoint via requests)
+# The models themselves are served separately with vLLM (not required to run the
+# rest of the pipeline):  pip install vllm
+
+# Stage D: normalization and knowledge graph
+rapidfuzz
+pycountry
+networkx
+pyoxigraph>=0.4
+
+# Evaluation, baseline and figures
+openpyxl
+scikit-learn
+matplotlib

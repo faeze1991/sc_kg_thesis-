@@ -1,9 +1,28 @@
+# Extraction schema (thesis Section 3.3, Tables 3.1 and 3.2).
+# Documentation only: the prompts in src/extraction/ spell the schema out in full.
+
 entity_types:
-- company
-- product
-- location
-relation_types:
-- manufactures
-- is_component_of
-- distributed_by
-- made_in
+  company:  The website operator or seller of the source page. Brand names are also company nodes.
+  product:  The main target item described on the page. Named parent products use the same type.
+  location: An explicitly stated production or manufacturing location of the target product.
+
+relation_types:              # domain -> range
+  manufactures:              # company -> product; the operator makes the product (yes / no / unknown)
+    domain: company
+    range: product
+  has_brand:                 # product -> company; a different company or brand that makes or brands the product
+    domain: product
+    range: company
+    stored_as: distributed_by  # field name in the prompts and extraction files
+  made_in:                   # product -> location; stated manufacturing location (not address / shipping origin)
+    domain: product
+    range: location
+  is_component_of:           # product -> product; one specific named parent product
+    domain: product
+    range: product
+
+derived_relations:
+  offers:                    # company -> product; website operator offers the page's product
+    domain: company
+    range: product
+    derivation: page_context   # not extracted by the LLM

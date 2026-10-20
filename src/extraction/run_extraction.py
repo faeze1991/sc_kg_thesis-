@@ -1,24 +1,30 @@
 """
-Stage C production extraction script.
+Stage C - single-pass extraction (one LLM call per page, all six fields).
 
-Design informed by:
-- Our own validated prompt (relevance check + tightened format, tested on
-  40 pages x 3 models with 100% JSON parse success and ~45% signal rate)
-- Documented GWDG/KISSKI server-side instability from a related thesis
-  project on the same infrastructure ("checkpoint/resume logic is more
-  impactful than timeout tuning") - so this prioritizes robust retry +
-  resumability over aggressive timeout settings
+The prompt (Appendix A.1 of the thesis) first runs a relevance check and then
+extracts company, product and the four relations in one JSON object. The field
+"distributed_by" is the relation called has_brand in the thesis.
 
-Runs ONE model at a time (pass model name as argument) - the full 3-model
-comparison stays on the smaller evaluation sample; production runs use a
-single chosen model for the full corpus.
+Works with any OpenAI-compatible chat-completions endpoint:
+  * self-hosted vLLM (used for the full-corpus Qwen3-30B-A3B and Llama 3.3 70B runs)
+  * the GWDG AcademicCloud API (used for the Mistral development subset)
 
-Resumable: skips domains already present in the output file, same pattern
-as Stage B. Checkpointed per-record (via output file itself, not a
-separate checkpoint file - safe under concurrency since order doesn't matter).
+Usage (from the project root):
+    EXTRACTION_ENDPOINT=http://localhost:8000/v1/chat/completions \
+    python -m src.extraction.run_extraction <model> [input.jsonl] [output.jsonl] [failures.log]
 
-Adaptive backoff: if requests start failing in a row, pauses and retries
-with increasing wait time, rather than hammering an unstable server.
+    <model>   the model name the endpoint serves, e.g.
+              Qwen/Qwen3-30B-A3B-Instruct-2507-FP8
+              lambdalabs/Llama-3.3-70B-Instruct-AWQ-4bit
+
+Environment variables:
+    EXTRACTION_ENDPOINT   chat-completions URL (default: GWDG AcademicCloud)
+    GWDG_API_KEY          bearer token; only needed for the GWDG API (vLLM ignores it)
+    EXTRACTION_WORKERS    concurrent requests (default 20; 3 was used against the GWDG API)
+
+Robustness: resumable (domains already in the output file are skipped), each
+record is written as soon as it is done, and after several consecutive failures
+the script backs off before retrying. Failed pages go to the failure log.
 """
 import json
 import os
@@ -33,11 +39,11 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import requests
 
-API_KEY = os.environ["GWDG_API_KEY"]
+API_KEY = os.environ.get("GWDG_API_KEY", "EMPTY")  # vLLM accepts any token
 ENDPOINT = os.environ.get("EXTRACTION_ENDPOINT", "https://chat-ai.academiccloud.de/v1/chat/completions")
 
-MAX_WORKERS = 20          # conservative starting point - untested at scale
-REQUEST_TIMEOUT = 60     # per Shima's finding: longer timeouts don't help server hangs
+MAX_WORKERS = int(os.environ.get("EXTRACTION_WORKERS", "20"))
+REQUEST_TIMEOUT = 60      # longer timeouts did not help with server-side hangs
 MAX_RETRIES = 3
 PROGRESS_INTERVAL = 100
 
@@ -206,8 +212,12 @@ def main(model, input_jsonl, output_jsonl, skiplog_path):
 
 
 if __name__ == "__main__":
-    model = sys.argv[1] if len(sys.argv) > 1 else "mistral-medium-3.5-128b"
+    if len(sys.argv) < 2:
+        print(__doc__)
+        sys.exit(1)
+    model = sys.argv[1]
     input_jsonl = sys.argv[2] if len(sys.argv) > 2 else "data/interim/fetched_pages.jsonl"
-    output_jsonl = sys.argv[3] if len(sys.argv) > 3 else f"data/interim/extraction_results_{model}.jsonl"
-    skiplog_path = sys.argv[4] if len(sys.argv) > 4 else f"data/interim/extraction_skipped_{model}.log"
+    tag = model.replace("/", "_")
+    output_jsonl = sys.argv[3] if len(sys.argv) > 3 else f"data/interim/extraction_results_{tag}.jsonl"
+    skiplog_path = sys.argv[4] if len(sys.argv) > 4 else f"data/interim/extraction_skipped_{tag}.log"
     main(model, input_jsonl, output_jsonl, skiplog_path)

@@ -15,18 +15,18 @@ HIDDEN reference file, so corpus-level (weighted) precision/recall can be
 computed later. The Excel sheet shows no model output, no field and no stratum,
 and rows are shuffled, so the annotation stays blind.
 
-Excluded: all domains in annotation_sample_BLIND.csv and annotation_topup_BLIND.csv.
+Excluded: all domains of the earlier annotation rounds (data/annotation/silver/).
 
 Usage (from project root, venv active):
-    python3 src/kg/make_stratified_annotation_sheet.py            # 40 pos + 40 neg per field
-    python3 src/kg/make_stratified_annotation_sheet.py 30 30      # smaller
-    python3 src/kg/make_stratified_annotation_sheet.py 40 40 7    # other seed
+    python -m src.kg.make_stratified_annotation_sheet            # 40 pos + 40 neg per field (seed 2026)
+    python -m src.kg.make_stratified_annotation_sheet 30 30      # smaller
+    python -m src.kg.make_stratified_annotation_sheet 40 40 7    # other seed
 
 Outputs:
-    data/interim/annotation_strat_BLIND.xlsx          <- annotate this
-    data/interim/annotation_strat_reference_HIDDEN.jsonl  <- do NOT open before annotating
-    data/interim/annotation_strat_design.json         <- stratum sizes (safe to open)
-    data/interim/annotation_strat_fulltext/<id>.txt   <- only for pages over Excel's cell limit
+    data/annotation/annotation_strat_BLIND.xlsx          <- annotate this
+    data/annotation/annotation_strat_reference_HIDDEN.jsonl  <- do NOT open before annotating
+    data/annotation/annotation_strat_design.json         <- stratum sizes (safe to open)
+    data/annotation/annotation_strat_fulltext/<id>.txt   <- only for pages over Excel's cell limit
 """
 
 import csv
@@ -51,12 +51,14 @@ CONFIGS = {  # raw (un-normalized) outputs of all four configurations
     "llama_single": f"{D}/extraction_results_llama70b_full.jsonl",
     "llama_iter": f"{D}/extraction_results_iterative_llama_full.jsonl",
 }
-USED = [f"{D}/annotation_sample_BLIND.csv", f"{D}/annotation_topup_BLIND.csv"]
+A = "data/annotation"
+# the 1,166 pages of the earlier (silver) annotation rounds are excluded from the gold sample
+USED = [f"{A}/silver/annotation_sample_WITH_CLAUDE.csv", f"{A}/silver/annotation_topup_WITH_CLAUDE.csv"]
 
-OUT_XLSX = f"{D}/annotation_strat_BLIND.xlsx"
-OUT_REF = f"{D}/annotation_strat_reference_HIDDEN.jsonl"
-OUT_DESIGN = f"{D}/annotation_strat_design.json"
-OUT_FULLTEXT_DIR = f"{D}/annotation_strat_fulltext"
+OUT_XLSX = f"{A}/annotation_strat_BLIND.xlsx"
+OUT_REF = f"{A}/annotation_strat_reference_HIDDEN.jsonl"
+OUT_DESIGN = f"{A}/annotation_strat_design.json"
+OUT_FULLTEXT_DIR = f"{A}/annotation_strat_fulltext"
 
 # field name used in the thesis -> key in the raw extraction files
 FIELDS = {
@@ -81,7 +83,11 @@ def load_used_domains():
     used = set()
     for path in USED:
         with open(path, newline="", encoding="utf-8") as f:
-            used.update(r["domain"].strip() for r in csv.DictReader(f))
+            sample = f.read(4096)
+            f.seek(0)
+            delim = ";" if sample.count(";") > sample.count(",") else ","
+            used.update((r.get("domain") or "").strip() for r in csv.DictReader(f, delimiter=delim))
+    used = {d for d in used if "." in d}  # drop empty / malformed cells of the semicolon CSVs
     return used
 
 
@@ -204,7 +210,7 @@ def main():
         ("gold_made_in", "germany"),
         ("gold_is_component_of", "festool ks 120 eb"),
         ("", ""),
-        ("Long pages", "If page_text ends with [TRUNCATED], the full text is in data/interim/annotation_strat_fulltext/<record_id>.txt"),
+        ("Long pages", "If page_text ends with [TRUNCATED], the full text is in data/annotation/annotation_strat_fulltext/<record_id>.txt"),
     ]
     for a, b in lines:
         ins.append([a, b])

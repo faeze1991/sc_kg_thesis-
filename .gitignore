@@ -1,21 +1,31 @@
-# data files
-data/raw/
-data/extracted/
+# ---------------------------------------------------------------- secrets
+.env
 
-# generated extraction/fetch outputs - large, regenerable, not source
-data/interim/*.jsonl
-data/interim/*.jsonl.bak
-data/interim/*.log
-data/interim/edge_cases/
-data/interim/athena_lookup_results_*.csv
-data/interim/athena_test_*.csv
-data/interim/stage_b_checkpoint_*.json
-data/interim/kg_graph.gpickle
-data/interim/kg_graph.graphml
-
-# python cache
+# ---------------------------------------------------------------- python / editors
 __pycache__/
 *.pyc
+.venv/
+venv/
+.vscode/
+.idea/
+.DS_Store
+__MACOSX/
 
-# environment
-.env
+# ---------------------------------------------------------------- data
+# Raw WDC corpus (15 GB) - download separately (see README)
+data/raw/
+
+# Pipeline outputs are large and regenerable. Everything in data/interim/ is
+# ignored except the small evaluation and graph results that back the thesis.
+data/interim/*
+!data/interim/eval/
+!data/interim/kg/
+
+data/interim/eval/audit_invalid_*.csv
+data/interim/eval/audit_missing_*.txt
+data/interim/kg/*.gpickle
+data/interim/kg/*.nt
+data/interim/kg/*.graphml
+
+# annotation helpers that are regenerable or too large
+data/annotation/annotation_strat_fulltext/
