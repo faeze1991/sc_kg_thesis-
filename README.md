@@ -1,7 +1,5 @@
 # Automated Construction of Supply Chain Knowledge Graphs from Web Crawl Data Using Large Language Models
 
-Code and evaluation data for the Master's thesis of **Faezeh Moradi** (Management and Data Science, Leuphana University Lüneburg, October 2026).
-First examiner: Dr. Debayan Banerjee · Second examiner: Anna Ehrenberg
 
 The pipeline selects one product page per website from the Web Data Commons Product Data Corpus (PDC2020-C), retrieves the archived pages from Common Crawl, extracts company–product information with zero-shot, schema-guided LLM prompting, and builds one knowledge graph per extraction configuration. The graphs are evaluated against a 320-page gold standard, a classical baseline, SPARQL competency questions and sampled graph audits.
 
