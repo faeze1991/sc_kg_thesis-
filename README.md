@@ -54,7 +54,7 @@ Relaxed F1 on the 320-page gold sample (thesis Table 5.2):
 | made_in | 0.71 | 0.67 | 0.77 | 0.70 |
 | is_component_of | 0.51 | 0.41 | 0.64 | 0.39 |
 
-All LLM configurations outperform the TF-IDF + SVM / logistic-regression baselines on every relation (binarized F1). Knowledge graphs (all pages, Table 5.4): 553k–622k nodes and 402k–454k edges per configuration. The audited precision of company pairs connected through a shared product (CQ8) is 0.49 after the identity rules were tightened. Full figures are in `data/interim/eval/thesis_numbers.txt`.
+All LLM configurations outperform the TF-IDF + SVM / logistic-regression baselines on every relation (binarized F1). Knowledge graphs (all pages, Table 5.4): 553k–622k nodes and 402k–454k edges per configuration. The audited precision of company pairs connected through a shared product (CQ8) is 0.49 after the identity rules were tightened.
 
 ---
 
