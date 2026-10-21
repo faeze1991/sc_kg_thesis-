@@ -173,7 +173,6 @@ data/
         └── cq8_recheck.csv          # which audited CQ8 pairs survive the revised identity rules
 ```
 
-**Gold standard.** Pages were annotated blind (the sheet shows the page text but no model output), following the explicit-evidence guidelines in thesis Section 4.1, and all labels were checked by the author. For nine pages, the evidence for at least one label appears only after the first 3,000 characters; `score_unified.py` marks them (`BEYOND_3000`) to measure the effect of truncation.
 
 ## Repository structure
 
