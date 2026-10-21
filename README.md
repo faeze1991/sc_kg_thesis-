@@ -20,7 +20,7 @@ The extraction is a 2 × 2 design: two self-hosted models (Qwen3-30B-A3B-Instruc
 | | Knowledge graphs with evidence-based product identity, competency questions | `src/kg/build_kg.py` | `kg/kg_<config>_<full\|common>.gpickle`, `kg/summary.csv` |
 | | RDF export and SPARQL competency questions CQ1–CQ8 | `src/kg/export_rdf.py` | `kg/*.nt`, `kg/sparql/*.rq`, `kg/sparql_*.txt` |
 | **Eval** | Stratified gold sample, scoring, baseline, pre-filter analysis, graph audits | `src/kg/make_stratified_annotation_sheet.py`, `score_unified.py`, `classical_baselines.py`, `feature_analysis.py`, `make_audit_sheets.py`, `recheck_cq8.py` | `eval/scores_long.csv`, `kg/audit_*_checked.xlsx` |
-| | All numbers and figures used in Chapters 3–5 | `src/kg/collect_thesis_numbers.py` | `eval/thesis_numbers.txt`, `eval/figures/` |
+| 
 
 All paths in the Output column are relative to `data/interim/`.
 
