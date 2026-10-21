@@ -24,21 +24,6 @@ The extraction is a 2 × 2 design: two self-hosted models (Qwen3-30B-A3B-Instruc
 
 All paths in the Output column are relative to `data/interim/`.
 
-### Where each part of the thesis lives in the code
-
-| Thesis section | Code |
-|---|---|
-| 3.2 Data source and retrieval (Stages A–B) | `src/fetch/` |
-| 3.3 Extraction schema | `config/schema.yaml`, prompts in `src/extraction/` |
-| 3.5 Single-pass strategy, Appendix A.1 | `src/extraction/run_extraction.py` (`PROMPT_TEMPLATE`) |
-| 3.6 Iterative strategy, Appendix A.1 | `src/extraction/run_iterative_extraction.py` (`ENTITY_PROMPT_TEMPLATE`, `RELATION_PROMPTS`) |
-| 3.8 Entity normalization | `src/normalization/` |
-| 3.9 Knowledge graph construction (identity routes, component parents, locations) | `src/kg/build_kg.py`, `src/kg/join_wdc_fields.py` |
-| 3.9.5 RDF export, competency questions, Appendix A.2 | `src/kg/export_rdf.py`, `data/interim/kg/sparql/` |
-| 4.1 Gold-standard sample | `src/kg/make_stratified_annotation_sheet.py`, `data/annotation/` |
-| 4.2 Metrics, bootstrap intervals, corpus weighting, baseline | `src/kg/score_unified.py`, `src/kg/classical_baselines.py` |
-| 4.3 / 5.5 Graph audit | `src/kg/make_audit_sheets.py`, `src/kg/recheck_cq8.py` |
-| 5.1 Runs, failures, pre-filter analysis | `src/kg/audit_outputs.py`, `src/kg/feature_analysis.py` |
 
 ---
 
