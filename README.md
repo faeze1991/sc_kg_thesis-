@@ -141,8 +141,6 @@ python -m src.kg.recheck_cq8 data/interim/kg/audit_sheets_checked.xlsx   # after
 python -m src.kg.collect_thesis_numbers > data/interim/eval/thesis_numbers.txt 2>&1
 ```
 
-The gold sample itself was drawn once with `python -m src.kg.make_stratified_annotation_sheet` (40 + 40 pages per relation, seed 2026). Re-running it is not needed to reproduce the scores.
-
 ---
 
 ## Data in this repository
