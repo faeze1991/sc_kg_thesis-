@@ -61,7 +61,6 @@ cp .env.example .env
 set -a; source .env; set +a       
 ```
 
-`.env` is gitignored and must never be committed.
 
 | Variable | Used by | Purpose |
 |---|---|---|
